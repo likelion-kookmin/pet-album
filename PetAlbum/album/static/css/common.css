@@ -3,7 +3,7 @@ body, p, h1, h2, h3, h4, h5, ul, ol, li {
   padding: 0;
   margin: 0;
 }
-ul, ol {
+ul {
 	list-style: none;
 }
 a {
@@ -11,7 +11,16 @@ a {
 	text-decoration: none;
   display: block;
 }
-/* img {
-  display: block;
-  width: 100%;
-} */
+.wrapper {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+img {
+  object-fit: cover;
+}
+label {
+  font-size: 14px;
+}
+.hide {
+  display: none;
+}

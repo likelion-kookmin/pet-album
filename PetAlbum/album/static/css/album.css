@@ -14,6 +14,7 @@
   border-radius: 50%;
   border: 1px solid #707070;
   float: left;
+  object-fit: cover;
 }
 .pet__name {
   font-size: 36px;
