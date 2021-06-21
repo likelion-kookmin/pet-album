@@ -16,7 +16,7 @@
 혹은 작업 도중 도저히 살릴 수 없어서(...) 다시 받아오는 경우
 
 1. git 원격 레포지토리 clone 받기
-   - `git clone https://github.com/likelion-kookmin/mentorink.git`
+   - `git clone https://github.com/likelion-kookmin/pet-album.git`
 2. 가상환경 생성 및 실행
    - 생성
      - Windows: `python -m venv venv`
