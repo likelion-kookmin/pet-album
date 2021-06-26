@@ -4,7 +4,7 @@ from django.db import models
 class Notice(models.Model):
     user_id = models.ForeignKey
     title = models.CharField(max_length=100)
-    contents = models.TextField
+    contents = models.TextField(null=True)
     created_date = models.DateField(auto_now_add=True) #수정 안됨
     updated_date = models.DateField(auto_now=True)
 

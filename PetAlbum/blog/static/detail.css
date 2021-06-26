@@ -20,6 +20,17 @@ body {
 .tabs {
     display: flex;
 }
+.link {
+    font-size: 15px;
+    text-align: center;
+    line-height: 30px;
+    width: 120px;
+    height: 30px;
+    background-color: #016FAC;
+    border-radius: 5px;
+    margin-left: 900px;
+    position: relative;
+}
 .tabs .tab {
     font-size: 15px;
     text-align: center;
