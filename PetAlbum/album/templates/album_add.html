@@ -52,68 +52,78 @@
           <label class="form-check-label" for="newest">
             최신순
           </label>
-          <input class="form-check-input" type="radio" name="sorting" id="newest" checked>
+          <input class="form-check-input" type="radio" name="sorting" id="newest">
         </div>
         <div class="form-check-inline">
           <label class="form-check-label" for="oldest">
             오래된순
           </label>
-          <input class="form-check-input" type="radio" name="sorting" id="oldest">
+          <input class="form-check-input" type="radio" name="sorting" id="oldest" checked>
         </div>
         <div class="list-container">
           <ol class="image-list">
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample01.jpg" alt="" class="image-thumbnail">
             </li>
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample02.jpg" alt="" class="image-thumbnail">
             </li>
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample03.jpg" alt="" class="image-thumbnail">
             </li>
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample01.jpg" alt="" class="image-thumbnail">
             </li>
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample02.jpg" alt="" class="image-thumbnail">
             </li>
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample03.jpg" alt="" class="image-thumbnail">
             </li>
-            <li class="image-item">
+            <li class="image-item" onclick=showDetail()>
               <img src="../static/sample02.jpg" alt="" class="image-thumbnail">
-            </li>
-            <li class="image-item">
-              <img src="../static/sample03.jpg" alt="" class="image-thumbnail">
             </li>
           </ol>
-          <div class="upload-btn-wrapper">
-            <label for="input_file" class="upload-btn">+</label>
-            <input type="file" id="input_file" multiple="multiple"/>
-          </div>
+          <button onclick=showUpload() class="upload-button">
+            <i class="bi bi-plus-lg"></i>
+          </button>
         </div>
       </aside>
       <div class="detail-container">
-        <div class="moment-info">
+        <div class="moment-info hide" id="detailPage">
           <input type="text" class="form-control" id="datePicker">
-          <img src="../static/sample01.jpg" class="moment__image"></img>
+          <div class="moment-container">
+            <img src="../static/sample01.jpg" class="moment__image"></img>
+            <button class="secret-button">
+              <img src="../static/lock.svg">
+            </button>
+          </div>
           <input type="text" class="form-control" placeholder="문구">
           <div class="button-container">
-            <button class="btn btn-secondary">삭제하기</button>
-            <button class="btn btn-primary">사진 변경</button>
+            <button class="delete-button" type="button">삭제하기</button>
+            <button class="edit-button" type="button">사진 변경</button>
           </div>
         </div>
-        <div class="upload-info hide">
+        <div class="upload-info" id="uploadPage">
           <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
               <div id="dropZone" class="dropbox">
-                  <div id="fileDragDesc">Drag and drop to upload</div>
-                  <table id="fileListTable" width="100%">
+                  <div id="fileDragDesc">
+                    <i class="bi bi-plus-lg"></i>
+                    <div>Drag and drop to upload</div>
+                    <div></div>
+                    <p>(up to 10MB)<br>PNG, JPEG are supported</p>
+                  </div>
+                  <table id="fileListTable" class="upload-table">
                       <tbody id="fileTableTbody">
                       </tbody>
                   </table>
               </div>
           </form>
-          <input type="button" onclick="uploadFile(); return false;" class="btn bg_01" value="파일 업로드">
+          <div class="upload-btn-wrapper hide" id="uploadButton">
+            <label for="input_file" class="upload-btn"></label>
+            <input type="file" id="input_file" multiple="multiple"/>
+          </div>
+          <input type="button" onclick="uploadFile(); return false;" class="upload-submit" value="파일 업로드">
         </div>
       </div>
     </div>
@@ -153,7 +163,7 @@
     dropZone.on('dragleave', function(e) {
       e.stopPropagation();
       e.preventDefault();
-      dropZone.css('background-color', '#FFFFFF'); // 드롭다운 영역 css
+      dropZone.css('background-color', '#D2D2D2'); // 드롭다운 영역 css
     });
     dropZone.on('dragover', function(e) {
       e.stopPropagation();
@@ -162,7 +172,7 @@
     });
     dropZone.on('drop', function(e) {
       e.preventDefault();
-      dropZone.css('background-color', '#FFFFFF'); // 드롭다운 영역 css
+      dropZone.css('background-color', '#D2D2D2'); // 드롭다운 영역 css
 
       var files = e.originalEvent.dataTransfer.files;
       if (files != null) {
@@ -339,7 +349,11 @@
       });
     }
   }
-
+  //uplaoad button 
+  $('#uploadForm').on('click', function() {
+    $('#input_file').trigger('click');
+  });
+  //datepicker
   $( function(){
     $("#datePicker").datepicker({
       inline: true,
@@ -349,5 +363,15 @@
       dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
     });
   });
+
+  //showPage
+  function showUpload(){
+    document.getElementById("uploadPage").style.display ='block';
+    document.getElementById("detailPage").style.display ='none';
+  }
+  function showDetail(){
+    document.getElementById("detailPage").style.display ='block';
+    document.getElementById("uploadPage").style.display ='none';
+  }
 </script>
 </html>

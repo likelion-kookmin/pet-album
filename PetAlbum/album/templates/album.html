@@ -24,19 +24,28 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="../static/sample01.jpg" class="carousel-image d-block mx-auto " data-bs-toggle="modal" data-bs-target="#myModal" alt="">
+            <button class="heart-button">
+              <i class="bi bi-suit-heart-fill"></i>
+            </button>
           </div>
           <div class="carousel-item">
             <img src="../static/sample02.jpg" class="carousel-image d-block mx-auto" data-bs-toggle="modal" data-bs-target="#myModal"  alt="">
+            <button class="heart-button">
+              <i class="bi bi-suit-heart-fill"></i>
+            </button>
           </div>
           <div class="carousel-item">
             <img src="../static/sample03.jpg" class="carousel-image d-block mx-auto" data-bs-toggle="modal" data-bs-target="#myModal" alt="">
+            <button class="heart-button">
+              <i class="bi bi-suit-heart-fill"></i>
+            </button>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev" onclick="$('#myCarousel').carousel('prev')">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next" onclick="$('#myCarousel').carousel('next')">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -45,10 +54,7 @@
         <input type="range" min="1" max="100" value="50" class="slider" id="imageRange">
       </div>
       <div class="button-container">
-        <button id="playButton" type="button" class="btn btn-default btn-xs">
-          <i class="bi bi-play-fill"></i>
-         </button>
-        <button id="pauseButton" type="button" class="btn btn-default btn-xs">
+        <button id="playPauseBtn" type="button" class="play-pause-button">
           <i class="bi bi-pause-fill"></i>
         </button>
       </div>
@@ -57,15 +63,14 @@
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
           <div class="modal-body">
             <div class="full-image">
               <img src="../static/sample01.jpg" class="w-100" alt="">
             </div>
-            <time>June.01.2016</time>
+            <div class="modal__text">
+              <h5 class="modal__title" id="ModalLabel">Modal title</h5>
+              <time class="modal__date">June.01.2016</time>
+            </div>
           </div>
         </div>
       </div>
@@ -75,18 +80,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-  $(function () {
+  $(function() {
     $('#myCarousel').carousel({
-        interval:2000,
-        pause: "false"
+      interval: 2000,
+      pause: "false"
     });
-    
-    $('#playButton').click(function () {
+
+    $(document).on('click', '#playPauseBtn', function() {
+      var $el = $(this).children("i");
+
+      var isPlaying = $el.hasClass('bi-pause-fill');
+      var isPaused = $el.hasClass('bi-play-fill');
+
+      if (isPaused) {
+        // we know it's paused, so play it
         $('#myCarousel').carousel('cycle');
-    });
-    $('#pauseButton').click(function () {
+        $el.removeClass('bi-play-fill');
+        $el.addClass('bi-pause-fill');
+      } else if (isPlaying) {
+        // we know it's playing, so pause it
         $('#myCarousel').carousel('pause');
+        $el.removeClass('bi-pause-fill');
+        $el.addClass('bi-play-fill');
+      }
     });
+  });
+
+  $('.heart-button').click(function(){
+    $(this).toggleClass('hearted');
   });
 </script>
 </html>

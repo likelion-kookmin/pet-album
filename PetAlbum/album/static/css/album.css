@@ -20,12 +20,12 @@
   font-size: 36px;
   line-height: 1;
   font-weight: bold;
-  color: #8C8C8C;
+  color: #484848;
 }
 .user__detail {
   font-size: 18px;
   line-height: 1;
-  color: #8C8C8C;
+  color: #484848;
 }
 .slide-container {
   width: 100%;
@@ -38,23 +38,55 @@
   object-fit: cover;
   object-position: 50% 50%;
 }
-/* .carousel-image:hover {
+.heart-button {
+  position: absolute;
+  right: 150px;
+  bottom: 15px;
+  width: 46px;
+  height: 46px;
+  color: #fff;
+  background-color: #bcbcbc;
+  -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .16);
+  -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .16);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, .16);
+  border-radius: 50%;
+}
+.play-pause-button {
+  font-size: 64px;
+  color: #707070;
+  background-color: transparent;
+}
+.hearted {
+  background-color: #016FAC;
+}
+.carousel-image:hover {
   cursor: pointer;
-} */
+}
 .button-container {
   text-align: center;
 }
+.modal-body {
+  padding: 0 !important;
+}
+.modal__text {
+  color: #707070;
+  padding: 20px;
+}
+.modal__date {
+  font-size: 12px;
+}
+
 .slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 4px;
+  height: 3px;
   background: #707070;
   outline: none;
   opacity: 0.7; 
   -webkit-transition: .2s;
   transition: opacity .2s;
-  border-radius: 2px;
+  border-radius: 1.5px;
 }
 .slider:hover {
   opacity: 1; 
@@ -62,8 +94,8 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; 
   appearance: none;
-  width: 20px; 
-  height: 20px; 
+  width: 12px; 
+  height: 12px; 
   background: #000;
   border-radius: 50%;
   cursor: pointer
@@ -73,4 +105,7 @@
   height: 20px;
   background: #000; 
   cursor: pointer;
+}
+.slider::-webkit-progress-value {
+  background-color: #ff0000; 
 }

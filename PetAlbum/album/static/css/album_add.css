@@ -12,7 +12,7 @@ body {
   font-weight: bold;
   color: #016FAC;
   background-color: #fff;
-  border: 0;
+
   border-radius: 18px;
 }
 .pet__image {
@@ -25,20 +25,35 @@ body {
   background-color: #fff;
   object-fit: cover;
 }
+.delete-button, .edit-button {
+  color: #fff;
+  padding: 2px 16px;
+}
+.delete-button {
+  color: #fff;
+  background-color: #c9c9c9;
+}
+.edit-button {
+  color: #fff;
+  background-color: #016FAC;
+}
+
 .aside-container {
   overflow: scroll;
   position: absolute;
-  padding: 10px;
-  width: 300px;
+  padding: 15px;
+  width: 270px;
   height: 100%;
-  -webkit-box-shadow: 5px 0 5px 0 rgba(0, 0, 0, .5);
-  -moz-box-shadow: 5px 0 5px 0 rgba(0, 0, 0, .5);
-  box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  -webkit-box-shadow: 10px 0 16px 0 rgba(0, 0, 0, .02);
+  -moz-box-shadow: 10px 0 16px 0 rgba(0, 0, 0, .02);
+  box-shadow: 10px 0 16px 0 rgba(0, 0, 0, .02);
 }
 .aside__title {
   margin: 10px;
   font-weight: bold;
   font-size: 18px;
+  color: #353535;
 }
 .detail-container {
   position: absolute;
@@ -52,40 +67,96 @@ body {
   justify-content: center;
   align-items: center;
 }
+.form-check-inline > label {
+  color: #8c8c8c;
+}
+.image-list {
+  padding: 10px;
+}
 .image-item {
-  margin-top: 16px;
+  counter-increment: item;
+  margin-top: 24px;
+}
+.image-item:hover {
+  cursor: pointer;
+}
+.image-item:before {
+  content: counter(item);
+  color: #000;
+  width: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  vertical-align: top;
+  display: inline-block;
 }
 .image-thumbnail {
   width: 180px;
   height: 100px;
 }
-.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-.upload-btn:hover {
-  cursor: pointer;
-}
-.upload-btn {
+.upload-button {
   width: 180px;
-  line-height: 100px;
-  color: #fff;
+  height: 100px;
+  margin: 0 0 60px 42px;
   background-color: #D2D2D2;
-  border: 0;
-  font-size: 48px;
-  font-weight: bold;
-  margin-left: 32px;
-  margin-bottom: 50px;
+  color: #fff;
+  font-size: 32px;
+}
+
+.moment-info input {
+  margin: 10px 0;
+}
+.moment-container {
+  display: block;
+  position: relative;
+}
+.moment__image {
+  width: 800px;
+  height: 500px;
+}
+.secret-button {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 46px;
+  height: 46px;
+  background-color: #ac0101;
+  -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2);
+  border-radius: 50%;
+}
+.button-container {
   text-align: center;
 }
 
+/* upload-btn */
+.upload-info {
+  margin-top: 10px;
+  position: relative;
+  display: block;
+}
+/* .upload-btn-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 800px;
+  height: 500px;
+  color: #fff;
+}
+.upload-btn {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
 .upload-btn-wrapper input[type=file] {
   /* font-size: 100px;
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 0; */
+  opacity: 0; 
   position: absolute;
   width: 1px;
   height: 1px;
@@ -94,36 +165,45 @@ body {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
+} */
 
 .dropbox {
-  width: 500px; 
-  height: 300px; 
-  background-color: #D2D2D2;
+  width: 800px; 
+  height: 500px;
   color: #fff;
+  background-color: #D2D2D2;
+}
+.dropbox i {
+  font-size: 72px;
+}
+.dropbox div {
+  font-size: 24px;
   font-weight: bold;
 }
-
+.dropbox p {
+  font-size: 14px;
+}
 #fileDragDesc {
   width: 100%; 
   height: 100%; 
   margin-left: auto; 
   margin-right: auto; 
-  line-height: 300px; 
-  padding: 10px; 
+  padding: 200px 10px; 
   text-align: center; 
   vertical-align: middle;
 }
-.moment-info input {
-  margin: 10px 0;
+.upload-table {
+  width: 100%;
+  margin: 10px;
 }
-.moment__image {
-  width: 800px;
-  height: 500px;
+.upload-submit {
+  margin-top: 20px;
+  border: 0;
+  background-color: #016FAC;
+  color: white;
+  padding: 2px 16px;
 }
-.button-container {
-  text-align: center;
-}
+
 
 /* DatePicker */
 .ui-datepicker {
