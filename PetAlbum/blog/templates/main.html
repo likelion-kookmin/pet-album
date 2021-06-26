@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+
+<body>
+    <div class="user">
+        <h2>User name</h2>
+        <br><h4>User ID</h4> 
+    </div>
+    <div class="home">
+        <div class = "tabs">
+            <div class="tab active" data-tab-target="#tab1">
+                <p>즐겨찾기</p>
+            </div>
+            <div class="tab" data-tab-target="#tab2">
+                <p>회원정보 수정</p>
+            </div>
+            <div class="tab" data-tab-target="#tab3">
+                <p>설정</p>
+            </div>
+            <div class="tab" data-tab-target="#tab4">
+                <p>1:1 문의</p>
+            </div>
+            <div class="tab" data-tab-target="#tab5">
+                <p>공지사항</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="tab1" data-tab-content class="items active">
+            <h2>즐겨찾기</h2>
+            <p>탭 1 에 들어갈 내용</p>
+        </div>
+        <div id="tab2" data-tab-content class="items">
+            <h2>회원정보 수정</h2>
+            <p>탭 2 에 들어갈 내용</p>
+        </div>
+        <div id="tab3" data-tab-content class="items">
+            <h2>설정</h2>
+            <p>탭 3 에 들어갈 내용</p>
+        </div>
+        <div id="tab4" data-tab-content class="items">
+            <h2>1:1문의</h2>
+            <p>탭 4 에 들어갈 내용</p>
+        </div>
+        <div id="tab5" data-tab-content class="items">
+            <h2>공지사항</h2>
+            <p>
+                {% for blog in blogs.all %}
+                    <h1>{{ blog.title }}</h1>
+                    <p>{{ blog.contents }}</p>
+                    <p>{{ blog.create_date }}</p>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+<script src="static/main.js"></script>
+</body>
+</html>
+
+{{blogs.all}}
