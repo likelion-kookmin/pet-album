@@ -34,6 +34,13 @@
             color: #484848;
             height: 30px;
         }
+        p.indent {
+            padding: 70px;
+        }
+        .pagination {
+            text-align: center;
+            color: black;
+        }
 
     </style>
 </head>
@@ -56,6 +63,7 @@
             </div>
             <div class="tab" data-tab-target="#tab4">
                 <p>1:1 문의</p>
+
             </div>
             <div class="tab" data-tab-target="#tab5">
                 <p>공지사항</p>
@@ -78,7 +86,11 @@
         </div>
         <div id="tab4" data-tab-content class="items">
             <h2>1:1문의</h2>
-            <p>탭 4 에 들어갈 내용</p>
+            <p>
+                {% for obj in objs.all %}
+                    <p>{{ obj.title }}</p>
+                {% endfor %}
+        </p>
         </div>
         <div id="tab5" data-tab-content class="items">
             <table class="table">
@@ -97,6 +109,10 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <p class="indent"></p>
+            <div class="pagination">
+                <a href="#" class="active"> 1</a>
+            </div> 
         </div>
     </div>
     

@@ -52,3 +52,13 @@ body {
 div.tab.active-tab {
     background-color: #fff;
 }
+.pagination a {
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color:black;
+}
+.pagination a.active {
+    color: #016FAC;
+}
