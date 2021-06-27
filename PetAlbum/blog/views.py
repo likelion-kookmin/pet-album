@@ -9,12 +9,13 @@ from django.core.paginator import Paginator
 
 def home(request):
     blogs = Notice.objects.all()
-    return render(request, 'main.html', {'blogs':blogs})
+    objs = Cs.objects.all()
+    return render(request, 'main.html', {'blogs':blogs, 'objs':objs})
 
 def detail(request, blog_id):
     blog_detail = get_object_or_404(Notice, pk=blog_id)
     return render(request, 'detail.html', {'blog': blog_detail})
 
 def cs(request):
-    objs = Cs.objects.all()
-    return render(request, 'main.html', {'objs':objs})
+    return render(request, 'cs_d.html')
+

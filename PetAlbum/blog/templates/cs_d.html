@@ -5,17 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'detail.css' %}">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.css">
-
     <style type="text/css"> 
-        body {
-            background-color:#016FAC;
-        }
         a { 
             text-decoration: none;
+            color: white;
+        }
+        .link {
+            font-size: 15px;
+            text-align: center;
+            line-height: 30px;
+            width: 120px;
+            height: 30px;
+            background-color: #016FAC;
+            border-radius: 5px;
+            float: right;
         } 
         table {
             padding: 10px;
@@ -26,7 +33,7 @@
         td {
             border-bottom: 1px solid #444444;
             border-color: #e2e2e2;
-            padding: 10px;
+            padding: 45px;
             color: #484848;
             height: 30px;
         }
@@ -34,17 +41,12 @@
             text-align: left;
             border-bottom: 2px solid #484848;
             border-color: #484848;
-            padding: 10px;
+            padding: 20px;
             color: #484848;
             height: 30px;
         }
         p.indent {
-            padding: 70px;
-        }
-        .pagination {
-            text-align: center;
-            color: black;
-            float: center;
+            padding: 50px;
         }
 
     </style>
@@ -57,7 +59,7 @@
     </div>
     <div class="home">
         <div class = "tabs">
-            <div class="tab active-tab" data-tab-target="#tab1">
+            <div class="tab" data-tab-target="#tab1">
                 <p>즐겨찾기</p>
             </div>
             <div class="tab" data-tab-target="#tab2">
@@ -66,9 +68,8 @@
             <div class="tab" data-tab-target="#tab3">
                 <p>설정</p>
             </div>
-            <div class="tab" data-tab-target="#tab4">
+            <div class="tab active-tab" data-tab-target="#tab4">
                 <p>1:1 문의</p>
-
             </div>
             <div class="tab" data-tab-target="#tab5">
                 <p>공지사항</p>
@@ -77,7 +78,7 @@
     </div>
 
     <div class="content">
-        <div id="tab1" data-tab-content class="items active">
+        <div id="tab1" data-tab-content class="items">
             <h2>즐겨찾기</h2>
             <p>탭 1 에 들어갈 내용</p>
         </div>
@@ -89,57 +90,32 @@
             <h2>설정</h2>
             <p>탭 3 에 들어갈 내용</p>
         </div>
-        <div id="tab4" data-tab-content class="items">
+        <div id="tab4" data-tab-content class="items active">
             <table class="table">
                 <thead>
+                    {% for obj in objs.all %}
                     <tr>
-                        <th>&nbsp;&nbsp;&nbsp;&nbsp;내용</th>
-                        <th style="width: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;작성일</th>
-                        <th style="width: 90px;">처리상태</th>
+                        <th style='color:#484848'>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title }} </th>
+                        <th style="font-size: 12px; width:20px">{{ obj.updated_date | date:"Y.m.d" }}</th>
                     </tr>
+                    {% endfor %}
                 </thead>
                 <tbody>
-                {% for obj in objs.all %}
-                <tr>
-                    <td><a href="{% url 'cs' %}" style="color:black"></a>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title|truncatechars:30 }}</td></a>
-                    <td width=200>{{ obj.updated_date|date:'Y. m. d' }}</td>
-                    <td width=100>&nbsp;{{ obj.state_check }}</td>
-                </tr> 
-                {% endfor %}
+                    <tr>
+                        <td>{{ obj.contents }}</td>
+                        <td> </td>
+                    </tr>
                 </tbody>
             </table>
-            <div class="pagination">
-                <a href="#" class="active"> 1</a>
-            </div> 
-            
-            
-
-            <p class="indent"></p>
+        <br>
+        <div class=link>
+            <a href="{% url 'home' %}">list</a> 
+        </div>
+        <p class="indent"></p>         
+        </div>
         </div>
         <div id="tab5" data-tab-content class="items">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>&nbsp;&nbsp;&nbsp;&nbsp;내용</th>
-                        <th style="width: 20px;">작성일</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for blog in blogs.all %}
-                <tr>
-                    <td><a href="{% url 'detail' blog.id %}" style="color:black"> &nbsp;&nbsp;&nbsp;&nbsp;{{ blog.title|truncatechars:30 }}</td></a>
-                    <td width=100>{{ blog.updated_date|date:'Y. m. d' }}</td>
-                </tr> 
-                {% endfor %}
-                </tbody>
-            </table>
-            <p class="indent"></p>
-            <div class="pagination">
-                <a href="#" class="active"> 1</a>
-            </div>
         </div>
-    </div>
-    
 <script src="static/main.js"></script>
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/bootstrap.js"></script>
