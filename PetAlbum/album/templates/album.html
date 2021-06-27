@@ -29,6 +29,8 @@
           <div class="carousel-item">
             {% if album.album_image %}
             <img src="{{album.album_image.url}}" class="carousel-image d-block mx-auto " data-bs-toggle="modal" data-bs-target="#myModal" alt="">
+            <span class="hide">{{album.comment}}</span>
+            <time class="hide">{{album.image_datetime}}</time>
             {% endif %}
             <button class="heart-button">
               <i class="bi bi-suit-heart-fill"></i>
@@ -60,10 +62,10 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="full-image">
-              <img src="../static/sample01.jpg" class="w-100" alt="">
+              <img src="" class="modal-image w-100" alt="">
             </div>
             <div class="modal__text">
-              <h5 class="modal__title" id="ModalLabel">Modal title</h5>
+              <h5 class="modal__title" id="modalLabel">Modal title</h5>
               <time class="modal__date">June.01.2016</time>
             </div>
           </div>
@@ -82,26 +84,52 @@
     });
     $('.carousel-item').filter(':first').addClass('active');
   });
+
   $(document).on('click', '#playPauseBtn', function() {
-      var $el = $(this).children("i");
+    var $el = $(this).children("i");
 
-      var isPlaying = $el.hasClass('bi-pause-fill');
-      var isPaused = $el.hasClass('bi-play-fill');
+    var isPlaying = $el.hasClass('bi-pause-fill');
+    var isPaused = $el.hasClass('bi-play-fill');
 
-      if (isPaused) {
-        // we know it's paused, so play it
-        $('#myCarousel').carousel('cycle');
-        $el.removeClass('bi-play-fill');
-        $el.addClass('bi-pause-fill');
-      } else if (isPlaying) {
-        // we know it's playing, so pause it
-        $('#myCarousel').carousel('pause');
-        $el.removeClass('bi-pause-fill');
-        $el.addClass('bi-play-fill');
-      }
-    });
+    if (isPaused) {
+      // we know it's paused, so play it
+      $('#myCarousel').carousel('cycle');
+      $el.removeClass('bi-play-fill');
+      $el.addClass('bi-pause-fill');
+    } else if (isPlaying) {
+      // we know it's playing, so pause it
+      $('#myCarousel').carousel('pause');
+      $el.removeClass('bi-pause-fill');
+      $el.addClass('bi-play-fill');
+    }
+  });
+  
   $('.heart-button').click(function(){
     $(this).toggleClass('hearted');
   });
+
+  // Get the modal
+  var modal = $("#myModal");
+  var modalImg = modal.find('.modal-image');
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = $(".carousel-image");
+  var caption =$(".modal__title");
+  var date = $(".modal__date")
+
+  img.click(function() {
+      modalImg.attr('src', $(this).attr('src'));
+      caption.text( $(this).siblings("span").text() );
+      date.text( $(this).siblings("time").text() );
+      modal.show();
+  });
+
+  // Get the elements that closes the modal
+  var modalCloser = $(".close");
+
+  // When the user clicks on the close element, close the modal
+  modalCloser.click(function() {
+      modal.hide();
+  });
+
 </script>
 </html>
