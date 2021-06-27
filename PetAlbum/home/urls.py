@@ -3,6 +3,6 @@ from django.urls.conf import include
 from .views import *
 
 urlpatterns = [
-    path('home_sun/',sun_views, name='sun'),
-    path('home_moon/',moon_views, name='moon'),
+    path('sun/',sun_views, name='sun'),
+    path('moon/',moon_views, name='moon'),
  ]

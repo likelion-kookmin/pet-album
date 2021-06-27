@@ -1,13 +1,32 @@
-{% extends 'base.html'%}
-
+{% load static %}
 {% block content %}
 
+
+<img src="{% static 'logo_black.png' %}" alt="" width="200" height=""><br>
+<h1>little friends</h1>
 <h1>Login</h1>
 
 <form action="{%url 'login'%}" method="post" >  <!--enctype="multipart/form-data"-->
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="아이디">
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호">
+      </div>
     {%csrf_token%}
     {{form.as_p}}
-    <button type="submit"> submit </button>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          로그인 유지하기
+        </label>
+        
+        <a href="#">아이디/비번 찾기</a><br>
+
+
+    <button type="submit" style="color: #016FAC;"> 로그인 </button> <br>
+      회원가입 할꺼임? <a href="#">회원가입</a><br>
 </form>
 
 {% endblock %}
