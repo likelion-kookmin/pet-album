@@ -19,3 +19,13 @@ def detail(request, blog_id):
 def cs(request):
     return render(request, 'cs_d.html')
 
+def create(request):
+    return render(request, 'create.html')
+
+def postcreate(request):
+    obj = Cs()
+    obj.title = request.GET.get('title')
+    obj.contents = request.GET.get('contents')
+    obj.updated_date = timezone.datetime.now()
+    obj.save()
+    return redirect('./home' + obj.id)
