@@ -25,18 +25,16 @@
       </div>
       <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{% static 'sample01.jpg' %}" class="carousel-image d-block mx-auto " data-bs-toggle="modal" data-bs-target="#myModal" alt="">
-            <button class="heart-button">
-              <i class="bi bi-suit-heart-fill"></i>
-            </button>
-          </div>
+          {% for album in albums %}
           <div class="carousel-item">
-            <img src="{% static 'sample02.jpg' %}" class="carousel-image d-block mx-auto " data-bs-toggle="modal" data-bs-target="#myModal" alt="">
+            {% if album.album_image %}
+            <img src="{{album.album_image.url}}" class="carousel-image d-block mx-auto " data-bs-toggle="modal" data-bs-target="#myModal" alt="">
+            {% endif %}
             <button class="heart-button">
               <i class="bi bi-suit-heart-fill"></i>
             </button>
           </div>
+          {% endfor %}
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev" onclick="$('#myCarousel').carousel('prev')">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -82,8 +80,9 @@
       interval: 2000,
       pause: "false"
     });
-
-    $(document).on('click', '#playPauseBtn', function() {
+    $('.carousel-item').filter(':first').addClass('active');
+  });
+  $(document).on('click', '#playPauseBtn', function() {
       var $el = $(this).children("i");
 
       var isPlaying = $el.hasClass('bi-pause-fill');
@@ -101,8 +100,6 @@
         $el.addClass('bi-play-fill');
       }
     });
-  });
-
   $('.heart-button').click(function(){
     $(this).toggleClass('hearted');
   });
