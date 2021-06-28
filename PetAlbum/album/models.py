@@ -6,5 +6,5 @@ class Album(models.Model):
     pet_id = models.ForeignKey
     album_image = models.ImageField(upload_to ="media/", null=True, blank=True)
     comment = models.TextField(null=True)
-    image_datetime = models.DateTimeField(auto_now=True)
+    image_datetime = models.DateTimeField()
     is_public = models.BooleanField(default=True)
