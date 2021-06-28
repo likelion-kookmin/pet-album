@@ -120,10 +120,17 @@ body {
   width: 46px;
   height: 46px;
   background-color: #ac0101;
+  background-image: url('../unlock.svg');
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
   -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2);
   -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2);
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2);
   border-radius: 50%;
+}
+.private {
+  background-image: url('../lock.svg');
 }
 .button-container {
   text-align: center;
@@ -135,38 +142,6 @@ body {
   position: relative;
   display: block;
 }
-/* .upload-btn-wrapper {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 800px;
-  height: 500px;
-  color: #fff;
-}
-.upload-btn {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  font-size: 48px;
-  font-weight: bold;
-  text-align: center;
-}
-.upload-btn-wrapper input[type=file] {
-  /* font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0; 
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-} */
-
 .dropbox {
   width: 800px; 
   height: 500px;
