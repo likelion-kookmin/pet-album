@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block content %}
+
 {% load static %}
 
 <style>
@@ -18,12 +18,15 @@
     }    
 </style>
 
+{% block container %}
+
     <div class="center">
     <img src="{% static 'logo_black.png' %}" alt="" width="200" height=""><br>
     <h1>little friends</h1>
     <button type="submit"> Login </button>
     <button type="submit"> Join </button> <br>
     둘러보기
+    <a href=""></a>
     <!-- <img src="{% static 'aboutus_background.jpg' %}" alt="" width="" height=""> -->
     </div>
 

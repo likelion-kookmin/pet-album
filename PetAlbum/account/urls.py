@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.resolvers import URLPattern
 from .views import * #views.py의 모든 함수를 가지고 온다는 문법임 
+from PetAlbum.templates import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),

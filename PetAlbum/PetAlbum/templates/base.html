@@ -1,59 +1,131 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    <style>
-      body{text-align: center;}
-    </style>
-  </head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script>
+    // 팝오버
+    $(function () {
+
+      $('[data-toggle="popover"]').popover()
+      $('.popover-dismiss').popover({
+        trigger: 'focus'
+      })
+      $('.example-popover').popover({
+        container: 'body'
+      })
+      $('#element').popover('toggle')
+      $('#myPopover').on('hidden.bs.popover', function () {
+        // do something…
+      })
+      
+    });
+  </script>
+  <style>
+    body {
+      text-align: center;
+      
+    }
+
+    /* navbar */
+    .navbar {
+      background-color: black;
+      border-color: #E7E7E7;
+    }
+  </style>
+
+</head>
+
+
 
 <body>
-  {% load static %}
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'main' %}">
-        <img src="{% static 'logo_black.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        <img src="{% static 'logo_black.png' %}" alt="" width="" height="24" class="d-inline-block align-text-top">
         little_friends
       </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <form class="navbar-form navbar-left" role="search">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href="{% url 'about_us' %}">About_us</a>
-          <a class="nav-link" href="{% url 'Home_sun' %}">Home</a>
-          
-          {% if not user.is_authenticated %}
-          <a class="nav-link" href="{% url 'Home_sun' %}">Join</a>
-          <a class="nav-link" href="{% url 'login' %}">Login</a>       
-          {% endif %}  
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" aria-current="page" href="{% url 'about_us' %}">About_us</a>
+            <a class="nav-link" href="{% url 'sun' %}">Home</a>
 
-          {% if user.is_authenticated %}
-          <a class="nav-link" href="{% url 'login' %}">Pet</a>  
-          <a class="nav-link" href="{% url 'login' %}">{{user.username}}</a>  
-          {% endif %}  
-        </div>
+            {% if not user.is_authenticated %}
+            <a class="nav-link" href="{% url 'join' %}">Join</a>
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+
+
+            <!-- 모달 -->
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <p>
+                    <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus"
+                      title="USER NAME"
+                      data-content="이야 이야이양" data-placement="bottom" >User</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'login' %}">Pet</a>
+            <a class="nav-link" href="{% url 'login' %}">{{user.username}}</a>
+            {% endif %}
+          </div>
       </form>
-      </div>
     </div>
-  </nav>  
-  
-  <img src="{% static 'logo_black.png' %}" alt="" width="" height="">
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
   <div class="container">
-    {% block content %}
+    {% block container %}
     {% endblock %}
   </div>
 
-</body>
+
+  <!-- 모달 -->
+  
+
+
+
+
 </html>
-<!-- {% load static %} -->
+
 <!--base.html에는 공통적으로 들어갈 부분을 작성해준다-->
-<!--템플릿 태그 {% block %}으로 HTML 내에 들어갈 수 있는 공간생성. base.html을 확장해 다른 템플릿에도 가져다 쓸 수 있도록 함.-->
+<!--템플릿 태그 block 으로 HTML 내에 들어갈 수 있는 공간생성. base.html을 확장해 다른 템플릿에도 가져다 쓸 수 있도록 함.-->
