@@ -24,7 +24,7 @@
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
             <li class="nav-item dropdown">
               <a class="navbar-brand dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../static/pet_thumbnail.jpg" alt="" class="pet__image">user01
+                <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">user01
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                 <li><a class="dropdown-item" href="#">user02</a></li>
@@ -65,27 +65,15 @@
         </div>
         <div class="list-container">
           <ol class="image-list">
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample01.jpg" alt="" class="image-thumbnail">
+            {% for album in albums %}
+            <li class="image-item">
+              {% if album.album_image %}
+              <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
+              {% endif %}
+              <span class="hide">{{album.comment}}</span>
+              <time class="hide">{{album.image_datetime}}</time>
             </li>
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample02.jpg" alt="" class="image-thumbnail">
-            </li>
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample03.jpg" alt="" class="image-thumbnail">
-            </li>
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample01.jpg" alt="" class="image-thumbnail">
-            </li>
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample02.jpg" alt="" class="image-thumbnail">
-            </li>
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample03.jpg" alt="" class="image-thumbnail">
-            </li>
-            <li class="image-item" onclick=showDetail()>
-              <img src="../static/sample02.jpg" alt="" class="image-thumbnail">
-            </li>
+            {% endfor %}
           </ol>
           <button onclick=showUpload() class="upload-button">
             <i class="bi bi-plus-lg"></i>
@@ -96,12 +84,12 @@
         <div class="moment-info hide" id="detailPage">
           <input type="text" class="form-control" id="datePicker">
           <div class="moment-container">
-            <img src="../static/sample01.jpg" class="moment__image"></img>
+            <img src="{% static 'sample01.jpg' %}" class="moment__image"></img>
             <button class="secret-button">
-              <img src="../static/lock.svg">
+              <img src="{% static 'lock.svg' %}">
             </button>
           </div>
-          <input type="text" class="form-control" placeholder="문구">
+          <input type="text" class="form-control" id="comment" placeholder="문구">
           <div class="button-container">
             <button class="delete-button" type="button">삭제하기</button>
             <button class="edit-button" type="button">사진 변경</button>
@@ -372,9 +360,23 @@
     document.getElementById("uploadPage").style.display ='block';
     document.getElementById("detailPage").style.display ='none';
   }
-  function showDetail(){
-    document.getElementById("detailPage").style.display ='block';
-    document.getElementById("uploadPage").style.display ='none';
-  }
+
+  // Get the modal
+  var page = $("#detailPage");
+  var upload = $("#uploadPage");
+  var detailImg = page.find('.moment__image');
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = $(".image-thumbnail");
+  var date =$("#datePicker");
+  var comment = $("#comment");
+
+  img.click(function() {
+      detailImg.attr('src', $(this).attr('src'));
+      date.attr('value', $(this).siblings("time").text());
+      comment.attr('value', $(this).siblings("span").text());
+      page.show();
+      upload.hide();
+  });
+
 </script>
 </html>
