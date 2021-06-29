@@ -16,21 +16,21 @@
   {% include "album_list.html" %}
     <div class="detail-container">
       <div class="upload-info" id="uploadPage">
-        <form action="{%url 'album:album_create' %}" method="post" enctype="multipart/form-data">
+        <form action="{%url 'album_create' %}" method="post" enctype="multipart/form-data">
           {%csrf_token%}
-          <input type="text" class="form-control" id="datePicker">
+          <input type="text" name="image_datetime" class="form-control" id="datePicker">
           <div class="moment-container">
             <img src="{% static 'blank_box.jpg' %}" id="output" alt="" class="moment__image"></img>
             <button class="secret-button"></button>
           </div>
-          <input type="text" class="form-control" id="comment" placeholder="순간에 대한 설명을 남겨보세요">
+          <input type="text" name="comment" class="form-control" id="comment" placeholder="순간에 대한 설명을 남겨보세요">
           <div class="button-container">
             <label for="input_file" class="edit-button">사진변경</label>
             <input id="input_file" type="file" class="hide" accept="image/*" onchange="loadFile(event)">
             <button class="edit-button" type="submit">저장하기</button>
           </div>
         </form>
-        <!-- <form action="{%url 'album:album_create'%}" name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
+        <!-- <form action="{%url 'album_create'%}" name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
           {%csrf_token%}
           <div id="dropZone" class="dropbox">
               <div id="fileDragDesc">
@@ -295,6 +295,7 @@
       inline: true,
       showOtherMonths: true,
       showMonthAfterYear: true,
+      dateFormat: "yy-mm-dd",
       monthNames: [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ],
       dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
     });

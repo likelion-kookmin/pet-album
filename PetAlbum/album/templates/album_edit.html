@@ -16,21 +16,21 @@
   {% include "album_list.html" %}
     <div class="detail-container">
       <div class="moment-info" id="detailPage">
-        <form action="{%url 'album:album_update' album.id%}" method="post" enctype="multipart/form-data">
+        <form action="{%url 'album_update' album.id%}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
-          <input type="text" class="form-control" id="datePicker" value="{{album.image_datetime}}">
+          <input type="text" name="image_datetime" class="form-control" id="datePicker" value="{{album.image_datetime}}">
           <div class="moment-container">
             {% if album.album_image %}
             <img src="{{album.album_image.url}}" id="output" alt="" class="moment__image"></img>
             {% endif %}
             <button class="secret-button"></button>
           </div>
-          <input type="text" class="form-control" id="comment" value="{{album.comment}}" placeholder="순간에 대한 설명을 남겨보세요">
+          <input type="text"  name="comment" class="form-control" id="comment" value="{{album.comment}}" placeholder="순간에 대한 설명을 남겨보세요">
           <div class="button-container">
             <label for="input_file" class="edit-button">사진변경</label>
-            <input id="input_file" type="file" class="hide" accept="image/*" onchange="loadFile(event)">
+            <input id="input_file" type="file" class="hide" accept="image/*" onchange="loadFile(event)" name="album_image">
             <button class="delete-button" type="button" onclick="doDelete();">삭제하기</button>
-            <button class="edit-button" type="button" onclick="doUpdate();">저장하기</button>
+            <button class="edit-button" type="submit">저장하기</button>
           </div>
         </form>
       </div>
@@ -47,6 +47,7 @@
       inline: true,
       showOtherMonths: true,
       showMonthAfterYear: true,
+      dateFormat: "yy-mm-dd",
       monthNames: [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ],
       dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
     });
@@ -57,13 +58,13 @@
   });
 
   function doDelete(){
-     location.href = "{% url 'album:album_delete' album.id %}";
+     location.href = "{% url 'album_delete' album.id %}";
   }
   function doUpdate(){
-     location.href = "{% url 'album:album_update' album.id %}";
+     location.href = "{% url 'album_update' album.id %}";
   }
   function goAdd(){
-     location.href = "{% url 'album:album_add' %}";
+     location.href = "{% url 'album_add' %}";
   }
   //uplaoad button 
   $('#output').on('click', function() {
