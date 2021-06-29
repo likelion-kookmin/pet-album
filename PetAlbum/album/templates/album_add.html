@@ -15,7 +15,7 @@
   <div class="wrapper">
   {% include "album_list.html" %}
     <div class="detail-container">
-      <div class="moment-info hide" id="detailPage">
+      <!-- <div class="moment-info hide" id="detailPage">
         <input type="text" class="form-control" id="datePicker">
         <div class="moment-container">
           <img src="{% static 'sample01.jpg' %}" class="moment__image"></img>
@@ -26,7 +26,7 @@
           <button class="delete-button" type="button">삭제하기</button>
           <button class="edit-button" type="button">사진 변경</button>
         </div>
-      </div>
+      </div> -->
       <div class="upload-info" id="uploadPage">
         <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
             <div id="dropZone" class="dropbox">
@@ -305,13 +305,13 @@
   var date =$("#datePicker");
   var comment = $("#comment");
 
-  img.click(function() {
-      detailImg.attr('src', $(this).attr('src'));
-      date.attr('value', $(this).siblings("time").text());
-      comment.attr('value', $(this).siblings("span").text());
-      page.show();
-      upload.hide();
-  });
+  // img.click(function() {
+  //     detailImg.attr('src', $(this).attr('src'));
+  //     date.attr('value', $(this).siblings("time").text());
+  //     comment.attr('value', $(this).siblings("span").text());
+  //     page.show();
+  //     upload.hide();
+  // });
 
 </script>
 </html>

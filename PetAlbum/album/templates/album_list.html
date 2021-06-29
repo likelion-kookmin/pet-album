@@ -50,11 +50,13 @@
     <ol class="image-list">
       {% for album in albums %}
       <li class="image-item">
-        {% if album.album_image %}
-        <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
-        {% endif %}
-        <span class="hide">{{album.comment}}</span>
-        <time class="hide">{{album.image_datetime}}</time>
+        <a href="{% url 'album:album_edit' album.id %}">
+          {% if album.album_image %}
+          <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
+          {% endif %}
+          <span class="hide">{{album.comment}}</span>
+          <time class="hide">{{album.image_datetime}}</time>
+        </a>
       </li>
       {% endfor %}
     </ol>

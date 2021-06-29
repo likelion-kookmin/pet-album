@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/common.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/album_add.css' %}"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <title>Edit Album</title>
+</head>
+<body>
+  <div class="wrapper">
+  {% include "album_list.html" %}
+    <div class="detail-container">
+      <div class="moment-info" id="detailPage">
+        <form action="{%url 'album:album_update' album.id%}" method="post" enctype="multipart/form-data">
+          <input type="text" class="form-control" id="datePicker" value="{{album.image_datetime}}">
+          <div class="moment-container">
+            {% if album.album_image %}
+            
+            <img src="{{album.album_image.url}}" alt="" class="moment__image"></img>
+            {% endif %}
+            <button class="secret-button"></button>
+          </div>
+          <input type="text" class="form-control" id="comment" value="{{album.comment}}" placeholder="순간에 대한 설명을 남겨보세요">
+          <div class="button-container">
+            <button class="delete-button" type="button">삭제하기</button>
+            <button class="edit-button" type="button">사진 변경</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+  //datepicker
+  $( function(){
+    $("#datePicker").datepicker({
+      inline: true,
+      showOtherMonths: true,
+      showMonthAfterYear: true,
+      monthNames: [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ],
+      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
+    });
+  });
+
+  $('.secret-button').click(function(){
+    $(this).toggleClass('private');
+  });
+
+</script>
+</html>
