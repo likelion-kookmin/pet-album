@@ -5,7 +5,11 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=50)
-    user_image = models.ImageField
-    pet = models.CharField(max_length=20)
+    user_image = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
+    pet_choices = (
+		('Y', '있음'),
+        ('N', '없음'),
+    )
+    pet = models.CharField(max_length=2, choices=pet_choices, blank=True)
 
 
