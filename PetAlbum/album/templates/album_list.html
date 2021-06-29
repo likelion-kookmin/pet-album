@@ -53,6 +53,8 @@
         <a href="{% url 'album_edit' album.id %}" class="detail-link">
           {% if album.album_image %}
           <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
+          {% else %}
+          <img src="{% static 'blank_box.jpg' %}" alt="" class="image-thumbnail">
           {% endif %}
           <span class="hide">{{album.comment}}</span>
           <time class="hide">{{album.image_datetime}}</time>

@@ -18,12 +18,12 @@
       <div class="moment-info" id="detailPage">
         <form action="{%url 'album_update' album.id%}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
-          <input type="text" name="image_datetime" class="form-control" id="datePicker" value="{{album.image_datetime}}">
+          <input type="text" name="image_datetime" class="form-control" id="datePicker" value='{{album.image_datetime|date:"Y-m-d"}}'>
           <div class="moment-container">
             {% if album.album_image %}
             <img src="{{album.album_image.url}}" id="output" alt="" class="moment__image"></img>
             {% endif %}
-            <button class="secret-button"></button>
+            <input type="button" name="is_public" value="true" id="secretButton" onClick="changePrivacy">
           </div>
           <input type="text"  name="comment" class="form-control" id="comment" value="{{album.comment}}" placeholder="순간에 대한 설명을 남겨보세요">
           <div class="button-container">
@@ -53,9 +53,15 @@
     });
   });
 
-  $('.secret-button').click(function(){
-    $(this).toggleClass('private');
-  });
+  function changePrivacy(){
+    secret = document.getElementById("secretButton");
+    secret.classList.toggle("private");
+    if (secret.classList.contains('private')){
+      secret.value = false;
+    }else {
+      secret.value = true;
+    }
+  };
 
   function doDelete(){
      location.href = "{% url 'album_delete' album.id %}";
