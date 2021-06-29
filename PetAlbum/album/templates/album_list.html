@@ -50,7 +50,7 @@
     <ol class="image-list">
       {% for album in albums %}
       <li class="image-item">
-        <a href="{% url 'album:album_edit' album.id %}">
+        <a href="{% url 'album:album_edit' album.id %}" class="detail-link">
           {% if album.album_image %}
           <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
           {% endif %}
@@ -60,8 +60,8 @@
       </li>
       {% endfor %}
     </ol>
-    <button onclick=showUpload() class="upload-button">
+    <button onclick="goAdd();" class="upload-button">
       <i class="bi bi-plus-lg"></i>
-    </button>
+    </a>
   </div>
 </aside>

@@ -12,7 +12,6 @@ body {
   font-weight: bold;
   color: #016FAC;
   background-color: #fff;
-
   border-radius: 18px;
 }
 .pet__image {
@@ -30,14 +29,14 @@ body {
   padding: 2px 16px;
 }
 .delete-button {
-  color: #fff;
   background-color: #c9c9c9;
 }
 .edit-button {
-  color: #fff;
   background-color: #016FAC;
 }
-
+.detail-link {
+  display: inline;
+}
 .aside-container {
   overflow: scroll;
   position: absolute;

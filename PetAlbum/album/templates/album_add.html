@@ -15,32 +15,21 @@
   <div class="wrapper">
   {% include "album_list.html" %}
     <div class="detail-container">
-      <!-- <div class="moment-info hide" id="detailPage">
-        <input type="text" class="form-control" id="datePicker">
-        <div class="moment-container">
-          <img src="{% static 'sample01.jpg' %}" class="moment__image"></img>
-          <button class="secret-button"></button>
-        </div>
-        <input type="text" class="form-control" id="comment" placeholder="문구">
-        <div class="button-container">
-          <button class="delete-button" type="button">삭제하기</button>
-          <button class="edit-button" type="button">사진 변경</button>
-        </div>
-      </div> -->
       <div class="upload-info" id="uploadPage">
-        <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
-            <div id="dropZone" class="dropbox">
-                <div id="fileDragDesc">
-                  <i class="bi bi-plus-lg"></i>
-                  <div>Drag and drop to upload</div>
-                  <div></div>
-                  <p>(up to 10MB)<br>PNG, JPEG are supported</p>
-                </div>
-                <table id="fileListTable" class="upload-table">
-                    <tbody id="fileTableTbody">
-                    </tbody>
-                </table>
-            </div>
+        <form action="{%url 'album:album_create'%}" name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
+          {%csrf_token%}
+          <div id="dropZone" class="dropbox">
+              <div id="fileDragDesc">
+                <i class="bi bi-plus-lg"></i>
+                <div>Drag and drop to upload</div>
+                <div></div>
+                <p>(up to 10MB)<br>PNG, JPEG are supported</p>
+              </div>
+              <table id="fileListTable" class="upload-table">
+                  <tbody id="fileTableTbody">
+                  </tbody>
+              </table>
+          </div>
         </form>
         <div class="upload-btn-wrapper hide" id="uploadButton">
           <label for="input_file" class="upload-btn"></label>
@@ -285,33 +274,5 @@
       dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
     });
   });
-
-  //showPage
-  function showUpload(){
-    document.getElementById("uploadPage").style.display ='block';
-    document.getElementById("detailPage").style.display ='none';
-  }
-
-  $('.secret-button').click(function(){
-    $(this).toggleClass('private');
-  });
-
-  // Get the modal
-  var page = $("#detailPage");
-  var upload = $("#uploadPage");
-  var detailImg = page.find('.moment__image');
-  // Get the image and insert it inside the modal - use its "alt" text as a caption
-  var img = $(".image-thumbnail");
-  var date =$("#datePicker");
-  var comment = $("#comment");
-
-  // img.click(function() {
-  //     detailImg.attr('src', $(this).attr('src'));
-  //     date.attr('value', $(this).siblings("time").text());
-  //     comment.attr('value', $(this).siblings("span").text());
-  //     page.show();
-  //     upload.hide();
-  // });
-
 </script>
 </html>

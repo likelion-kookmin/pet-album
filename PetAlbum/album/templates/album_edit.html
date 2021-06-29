@@ -20,16 +20,18 @@
           <input type="text" class="form-control" id="datePicker" value="{{album.image_datetime}}">
           <div class="moment-container">
             {% if album.album_image %}
-            
-            <img src="{{album.album_image.url}}" alt="" class="moment__image"></img>
+            <img src="{{album.album_image.url}}" id="output" alt="" class="moment__image"></img>
             {% endif %}
             <button class="secret-button"></button>
           </div>
           <input type="text" class="form-control" id="comment" value="{{album.comment}}" placeholder="순간에 대한 설명을 남겨보세요">
           <div class="button-container">
-            <button class="delete-button" type="button">삭제하기</button>
-            <button class="edit-button" type="button">사진 변경</button>
+            <label for="input_file" class="edit-button">사진변경</label>
+            <input id="input_file" type="file" class="hide" accept="image/*" onchange="loadFile(event)">
+            <button class="delete-button" type="button" onclick="doDelete();">삭제하기</button>
+            <button class="edit-button" type="button" onclick="doUpdate();">저장하기</button>
           </div>
+    
         </form>
       </div>
     </div>
@@ -53,6 +55,30 @@
   $('.secret-button').click(function(){
     $(this).toggleClass('private');
   });
+
+  function doDelete(){
+     location.href = "{% url 'album:album_delete' album.id %}";
+  }
+  function doUpdate(){
+     location.href = "{% url 'album:album_update' album.id %}";
+  }
+  function goAdd(){
+     location.href = "{% url 'album:album_add' %}";
+  }
+  //uplaoad button 
+  $('#output').on('click', function() {
+      $('#input_file').trigger('click');
+    });
+
+  //image preview
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
 
 </script>
 </html>
