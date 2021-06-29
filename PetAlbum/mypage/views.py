@@ -8,13 +8,13 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def home(request):
-    blogs = Notice.objects.all()
+    mypages = Notice.objects.all()
     objs = Cs.objects.all()
-    return render(request, 'main.html', {'blogs':blogs, 'objs':objs})
+    return render(request, 'main.html', {'mypages':mypages, 'objs':objs})
 
-def detail(request, blog_id):
-    blog_detail = get_object_or_404(Notice, pk=blog_id)
-    return render(request, 'detail.html', {'blog': blog_detail})
+def detail(request, mypage_id):
+    mypage_detail = get_object_or_404(Notice, pk=mypage_id)
+    return render(request, 'detail.html', {'mypage': mypage_detail})
 
 def cs(request, obj_id):
     obj_detail = get_object_or_404(Cs, pk=obj_id)
@@ -33,6 +33,6 @@ def create(request):
         # obj.user_id = request.user
         obj.created_date = timezone.datetime.now()
         obj.updated_date = timezone.datetime.now()
-        obj.state_check = False
+        obj.state_check = "ing"
         obj.save()
         return redirect('cs', obj.id)

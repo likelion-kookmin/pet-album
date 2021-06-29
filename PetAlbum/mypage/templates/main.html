@@ -212,10 +212,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for blog in blogs.all %}
+                {% for mypage in mypages.all %}
                 <tr>
-                    <td><a href="{% url 'detail' blog.id %}" style="color:#707070"> &nbsp;&nbsp;&nbsp;&nbsp;{{ blog.title|truncatechars:30 }}</td></a>
-                    <td width=100 style="color:#707070">{{ blog.updated_date|date:'Y. m. d' }}</td>
+                    <td><a href="{% url 'detail' mypage.id %}" style="color:#707070"> &nbsp;&nbsp;&nbsp;&nbsp;{{ mypage.title|truncatechars:30 }}</td></a>
+                    <td width=100 style="color:#707070">{{ mypage.updated_date|date:'Y. m. d' }}</td>
                 </tr> 
                 {% endfor %}
                 </tbody>

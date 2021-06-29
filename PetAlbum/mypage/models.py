@@ -22,7 +22,7 @@ class Cs(models.Model):
     cs_image = models.ImageField(null=True)
     state_choices = (
         ("처리중", "ing"),
-        ("처리완료", "Finished"),
+        ("처리완료", "finished"),
     )
     state_check = models.CharField(max_length=50, choices=state_choices)
 
