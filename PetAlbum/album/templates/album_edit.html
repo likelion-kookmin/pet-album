@@ -17,6 +17,7 @@
     <div class="detail-container">
       <div class="moment-info" id="detailPage">
         <form action="{%url 'album:album_update' album.id%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
           <input type="text" class="form-control" id="datePicker" value="{{album.image_datetime}}">
           <div class="moment-container">
             {% if album.album_image %}
@@ -31,7 +32,6 @@
             <button class="delete-button" type="button" onclick="doDelete();">삭제하기</button>
             <button class="edit-button" type="button" onclick="doUpdate();">저장하기</button>
           </div>
-    
         </form>
       </div>
     </div>

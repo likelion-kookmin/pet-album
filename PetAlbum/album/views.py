@@ -21,8 +21,7 @@ def album_create(request):
   if form.is_valid():
     new_album = form.save(commit=False)
     new_album.save()
-    return redirect('detail',new_album.id)
-  return redirect('home')
+  return redirect('album_edit.html',new_album.id)
 
 def album_edit(request, id):
   albums = Album.objects.all()

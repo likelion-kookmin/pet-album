@@ -34,6 +34,9 @@ body {
 .edit-button {
   background-color: #016FAC;
 }
+.edit-button:hover {
+  cursor: pointer;
+}
 .detail-link {
   display: inline;
 }
@@ -101,7 +104,7 @@ body {
   font-size: 32px;
 }
 
-.moment-info input {
+.moment-info input, .upload-info input {
   margin: 10px 0;
 }
 .moment-container {
@@ -137,7 +140,6 @@ body {
 
 /* upload-btn */
 .upload-info {
-  margin-top: 10px;
   position: relative;
   display: block;
 }
