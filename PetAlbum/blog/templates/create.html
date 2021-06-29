@@ -107,18 +107,22 @@
             
             <br>
             <div class="container">
-	        <form action="{ % url 'postcreate' %}">
-	        <h4>제목: </h4>
-	        <input type="text" name="title">
-	        <br>
-	        <br>
-	        <h4>본문: </h4>
-	        <textarea cols=40 rows=10 name="body"></textarea>
-	        <br>
-	        <br>
-	        <input class="btn btn-dark" type="submit" value="글쓰기">
-            <a href="{% url 'home' %}">취소하기</a>
-        </form>
+	        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token%}
+                <h4>제목: </h4>
+                <input type="text" name="title">
+                <br>
+                <br>
+                <h4>본문: </h4>
+                <textarea cols=40 rows=10 name="contents"></textarea>
+                <br>
+                <h4>이미지: </h4>
+                <input name="cs_image" type="file">
+                <br>
+                <br>
+                <input class="btn btn-dark" type="submit" value="글쓰기">
+                <a href="{% url 'home' %}">취소하기</a>
+            </form>
     </div>
             <p class="indent"></p>
         </div>
