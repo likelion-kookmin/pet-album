@@ -9,18 +9,23 @@ def album(request):
 
 def album_add(request):
   albums = Album.objects.all()
-  return render(request, 'album_add.html', {'albums':albums})
-
-def album_new(request):
   form = AlbumForm()
-  return render(request,'album_add.html', {'form':form})
+  return render(request, 'album_add.html', {'albums':albums, 'form':form})
 
 def album_create(request):
-  form = AlbumForm(request.POST, request.FILES)
-  if form.is_valid():
-    new_album = form.save(commit=False)
-    new_album.save()
-    return redirect('album_edit.html',new_album.id)
+  # form = AlbumForm(request.POST, request.FILES)
+  new_album = Album()
+  new_album.comment = request.POST['comment']
+  new_album.image_datetime = request.POST['image_datetime']
+  try:
+    new_album.album_image = request.FILES['album_image']
+  except:
+    pass
+  new_album.save()
+  # if form.is_valid():
+  #   new_album = form.save(commit=False)
+  #   new_album.save()
+  #   return redirect('album_edit.html',new_album.id)
   return redirect('album_add')
 
 def album_edit(request, id):
