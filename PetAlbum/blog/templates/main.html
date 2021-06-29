@@ -187,7 +187,7 @@
                 <tbody>
                 {% for obj in objs.all %}
                 <tr>
-                    <td><a href="{% url 'cs' %}" style="color:#707070"></a>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title|truncatechars:30 }}</td></a>
+                    <td><a href="{% url 'cs' obj.id %}" style="color:#707070"></a>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title|truncatechars:30 }}</td></a>
                     <td width=200 style="color:#707070">{{ obj.updated_date|date:'Y. m. d' }}</td>
                     <td width=100 style="color:#707070">&nbsp;{{ obj.state_check }}</td>
                 </tr> 
@@ -199,7 +199,7 @@
             </div> 
             <br><br><br>
             <div class=link>
-                <a href="{% url 'postcreate' %}" style="color:white;">1:1문의하기</a> 
+                <a href="{% url 'create' %}" style="color:white;">1:1문의하기</a> 
             </div>
             <p class="indent"></p>
         </div>
@@ -227,7 +227,7 @@
         </div>
     </div>
     
-<script src="static/main.js"></script>
+<script src="{% static 'main.js' %}"></script>
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/bootstrap.js"></script>
 </body>

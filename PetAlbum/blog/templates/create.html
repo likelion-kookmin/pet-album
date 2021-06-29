@@ -39,7 +39,7 @@
             height: 30px;
         }
         p.indent {
-            padding: 70px;
+            padding: 35px;
         }
         .pagination {
             text-align: center;
@@ -107,7 +107,7 @@
             
             <br>
             <div class="container">
-	        <form action="">
+	        <form action="{ % url 'postcreate' %}">
 	        <h4>제목: </h4>
 	        <input type="text" name="title">
 	        <br>
@@ -120,15 +120,13 @@
             <a href="{% url 'home' %}">취소하기</a>
         </form>
     </div>
-
-
             <p class="indent"></p>
         </div>
         <div id="tab5" data-tab-content class="items">
             
     </div>
     
-<script src="static/main.js"></script>
+<script src="{% static 'main.js' %}"></script>
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/bootstrap.js"></script>
 </body>

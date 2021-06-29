@@ -93,12 +93,10 @@
         <div id="tab4" data-tab-content class="items active">
             <table class="table">
                 <thead>
-                    {% for obj in objs.all %}
                     <tr>
                         <th style='color:#484848'>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title }} </th>
                         <th style="font-size: 12px; width:20px">{{ obj.updated_date | date:"Y.m.d" }}</th>
                     </tr>
-                    {% endfor %}
                 </thead>
                 <tbody>
                     <tr>
@@ -116,7 +114,7 @@
         </div>
         <div id="tab5" data-tab-content class="items">
         </div>
-<script src="static/main.js"></script>
+<script src="{% static 'main.js' %}"></script>
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/bootstrap.js"></script>
 </body>

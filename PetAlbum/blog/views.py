@@ -16,8 +16,9 @@ def detail(request, blog_id):
     blog_detail = get_object_or_404(Notice, pk=blog_id)
     return render(request, 'detail.html', {'blog': blog_detail})
 
-def cs(request):
-    return render(request, 'cs_d.html')
+def cs(request, obj_id):
+    obj_detail = get_object_or_404(Cs, pk=obj_id)
+    return render(request, 'cs_detail.html', {'obj':obj_detail})
 
 def create(request):
     return render(request, 'create.html')
@@ -28,4 +29,4 @@ def postcreate(request):
     obj.contents = request.GET.get('contents')
     obj.updated_date = timezone.datetime.now()
     obj.save()
-    return redirect('./home' + obj.id)
+    return redirect('cs', obj.id)
