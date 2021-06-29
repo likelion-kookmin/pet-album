@@ -1,0 +1,26 @@
+.navbar.bg-light {
+    background-color: #fff !important;
+    
+}
+.navbar-brand {
+    font-family: 'LittleJoodles';
+    font-size:30px;
+}
+.circle {
+    margin-top: 428px;
+    margin-bottom: 365px;
+    margin-left: 817px;
+    margin-right: 816px;
+    position:absolute;
+    width: 287px;
+    height: 287px;
+    overflow:hidden;
+    border-radius: 50%
+}
+
+.image-thumbnail {
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
