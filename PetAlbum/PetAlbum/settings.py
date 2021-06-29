@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # hyunji-mypage
     'mypage',
     # soyeon-account
+    'PetAlbum',
     'account',
     'main',
     'home',
@@ -135,7 +136,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'account', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'PetAlbum', 'static')]
 # 현재 static 파일들이 어디에 있는지
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #static 파일을 어디에 모을건지 
 
 

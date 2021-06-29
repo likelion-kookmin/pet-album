@@ -7,10 +7,10 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
-def home(request):
+def mypage(request):
     mypages = Notice.objects.all()
     objs = Cs.objects.all()
-    return render(request, 'main.html', {'mypages':mypages, 'objs':objs})
+    return render(request, 'mypage.html', {'mypages':mypages, 'objs':objs})
 
 def detail(request, mypage_id):
     mypage_detail = get_object_or_404(Notice, pk=mypage_id)
