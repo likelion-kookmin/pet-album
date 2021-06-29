@@ -187,7 +187,7 @@
                 <tbody>
                 {% for obj in objs.all %}
                 <tr>
-                    <td><a href="{% url 'cs' obj.id %}" style="color:#707070"></a>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title|truncatechars:30 }}</td></a>
+                    <td><a href="{% url 'cs' obj.id %}" style="color:#707070">&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title|truncatechars:30 }}</td></a>
                     <td width=200 style="color:#707070">{{ obj.updated_date|date:'Y. m. d' }}</td>
                     <td width=100 style="color:#707070">&nbsp;{{ obj.state_check }}</td>
                 </tr> 

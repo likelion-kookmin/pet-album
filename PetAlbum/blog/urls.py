@@ -22,5 +22,4 @@ urlpatterns = [
     path('detail/<int:blog_id>', detail, name='detail'),
     path('cs/<int:obj_id>', cs, name="cs"),
     path('create/', create, name="create"),
-    path('postcreate/', postcreate, name="postcreate"),
 ]
