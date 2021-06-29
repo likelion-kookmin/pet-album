@@ -8,7 +8,6 @@ urlpatterns = [
     path('', views.NoticeListView.as_view(), name="notice_list"),
     path('create/', views.create, name="create"),
     path('cs/<int:obj_id>', views.cs, name="cs"),
-    path('create/', views.postcreate, name='postcreate'),
 ]
 '''
 

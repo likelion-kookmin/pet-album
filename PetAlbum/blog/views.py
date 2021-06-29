@@ -21,12 +21,18 @@ def cs(request, obj_id):
     return render(request, 'cs_detail.html', {'obj':obj_detail})
 
 def create(request):
-    return render(request, 'create.html')
-
-def postcreate(request):
-    obj = Cs()
-    obj.title = request.GET.get('title')
-    obj.contents = request.GET.get('contents')
-    obj.updated_date = timezone.datetime.now()
-    obj.save()
-    return redirect('cs', obj.id)
+    if request.method == 'GET':
+        return render(request, 'create.html')
+    else:
+        obj = Cs()
+        # save visible model data
+        obj.title = request.POST['title']
+        obj.contents = request.POST.get('contents', None)
+        obj.cs_image = request.FILES.get('cs_image', None)
+        # save invisible model data
+        # obj.user_id = request.user
+        obj.created_date = timezone.datetime.now()
+        obj.updated_date = timezone.datetime.now()
+        obj.state_check = False
+        obj.save()
+        return redirect('cs', obj.id)
