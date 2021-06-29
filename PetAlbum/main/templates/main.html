@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<style>
+    /* body {
+        background-image: url("aboutus_background.jpg");
+        background-repeat: no-repeat;
+        background-size : cover ;
+    } */
+    .middle {
+        position: relative;
+        margin: 0 5% 0 5%;
+        border: none;
+        }
+    .center {
+      margin: 10%;
+    }    
+</style>
+
+{% block container %}
+
+    <div class="center">
+    <img src="{% static 'logo_black.png' %}" alt="" width="200" height=""><br>
+    <h1>little friends</h1>
+    <button type="submit"> Login </button>
+    <button type="submit"> Join </button> <br>
+    둘러보기
+    <a href=""></a>
+    <!-- <img src="{% static 'aboutus_background.jpg' %}" alt="" width="" height=""> -->
+    </div>
+
+{% endblock %}

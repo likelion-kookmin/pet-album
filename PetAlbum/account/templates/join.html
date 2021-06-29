@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+<head>
+    
+    <!-- 비밀번호 눈 표시 -->
+    <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> 
+
+
+
+<style>
+    .checkbox-container {
+        position: relative;
+    }
+
+    /* 기본 체크박스 없애기 */
+    .checkbox-container input[type="checkbox"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0
+    }
+    
+    /* 웹의 경우 커서에 pointer 설정 */
+    .checkbox-container input[type="checkbox"]+label {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* 새로운 디자인의 체크박스 만들기 */
+    .checkbox-container input[type="checkbox"]+label:before {
+        content: ' ';
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        line-height: 17px;
+        margin: -2px 8px 0 0;
+        text-align: center;
+        vertical-align: middle;
+        background: #fafafa;
+        border: 1px solid #cacece;
+        border-radius: 50%;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    }
+
+    .checkbox-container input[type="checkbox"]+label:active:before,
+
+    .checkbox-container input[type="checkbox"]:checked+label:active:before {
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkbox-container input[type="checkbox"]:checked+label:before {
+        content: '\2714';
+        font-size: small;
+        color: white;
+        text-shadow: 1px 1px white;
+        background: blue;
+        border-color: #adb8c0;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .input { 
+        position: relative; 
+    } 
+    .input .eyes { 
+        position: absolute; 
+        top: 0; 
+        bottom: 0; 
+        right: 0; 
+        margin: auto 2px; 
+        height: 30px; 
+        font-size: 22px; 
+        cursor: pointer;
+    }
+    
+
+
+
+    .agree ul {margin-top: 10px;}
+    .agree ul li {margin-bottom: 15px;}
+    .agree ul li:after {display:block; clear:both; content:"";}
+    .agree ul li input[type="checkbox"] {display: none;}
+    .agree ul li input[type="checkbox"] + label { width:17px; height: 17px; background: #fa3062; cursor: pointer; border-radius: 3px;float: right;}
+    .agree ul li input[type="checkbox"]:checked + label {background:url(../images/check.png) #fa3062 no-repeat center/10px 10px; float: right}
+    .agree ul li input[type="checkbox"] + label span {position: absolute; left:0px; display: block; }
+
+
+</style>
+</head>
+
+{% block container %}
+<h1>회원가입</h1>
+
+<form action="{%url 'login'%}" method="post">
+    <!--enctype="multipart/form-data"-->
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="아이디">
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호">
+    </div>
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <div class="form-check form-switch">
+        <label class="form-check-label" for="flexSwitchCheckChecked">반려동물 앨범 서비스 이용하기(팝오버&툴팁)</label>
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+    </div>
+
+
+
+
+    <div class="agree">
+        <div class="all_agree">
+          <input type="checkbox" id="a1" name="전체동의" />
+          <label for="a1"><span>전체약관동의</span></label>
+        </div><!-- .all_agree -->
+      </div><!-- .agree -->
+      
+      <ul>
+        <li><input type="checkbox" id="a2" name="전체동의" />
+          <label for="a2"><span>이용약관동의 (필수)</span></label>
+        </li>
+      
+        <li><input type="checkbox" id="a3" name="전체동의" />
+          <label for="a3"><span>개인정보수집이용 동의 (필수)</span></label>
+        </li>
+      
+        <li><input type="checkbox" id="a4" name="전체동의" />
+          <label for="a4"><span>만 14세 이상 확인 (필수)</span></label>
+        </li>
+      </ul>
+      
+
+
+
+
+
+
+
+    <div>
+        <ul>
+            <li><span >아이디 </span><br><input type = "text" placeholder = "아이디를 입력하세요" class = 'box'/></li>
+            <li><span '>패스워드 </span><br><input type = "password" placeholder = "패스워드를 입력하세요" class = 'box'/>
+                <br><span class = 'necessary' >필수 정보입니다.</span></li>
+            <li><span >패스워드 확인 </span><br><input type = "password" placeholder = "다시 패스워드를 입력하세요" class = 'box' />
+                <br><span class = 'necessary' >필수 정보입니다.</span></li>
+        
+    </ul>
+    </div>
+
+    <div class="input password"> <label for="password"class="label password">비밀번호</label> 
+        <input type="password" id="password" class="form-input" placeholder="비밀번호를 입력해주세요.">
+        <div class="eyes">
+            <i class="fa fa-eye fa-lg"></i>
+        </div>
+    </div>
+
+
+
+
+    <button type="submit" style="color: #016FAC;"> 회원가입 </button> <br>
+
+</form>
+
+{% endblock %}
