@@ -20,6 +20,11 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- 네비바 -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- 팝오버 -->
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <script>
     // 팝오버
@@ -42,217 +47,187 @@
   <style>
     body {
       text-align: center;
-
     }
 
     /* navbar */
-    .navbar {
-      background-color: black;
-      border-color: #E7E7E7;
-    }
 
-
-    /* 유저모달창 */
-    .me {
-      background-color: black;
-      background-size: cover;
-    }
-
-    .email {
-      background: #DEDBDF;
-      border-radius: 16px;
-      height: 32px;
-      overflow: hidden;
-      position: relative;
-      width: 80px;
-      -webkit-tap-highlight-color: transparent;
-      transition: width 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-        height 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-        box-shadow 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-        border-radius 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-
-    .email:not(.expand) {
-      cursor: pointer;
-    }
-
-    .email:not(.expand):hover {
-      background: #C2C0C2;
-    }
-
-    .from {
-      position: absolute;
-      transition: opacity 200ms 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
-    }
-
-    .from-contents {
-      display: flex;
-      flex-direction: row;
-      transform-origin: 0 0;
-      transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-
-    .to {
-      opacity: 0;
-      position: absolute;
-      transition: opacity 100ms cubic-bezier(0.4, 0.0, 1, 1);
-    }
-
-    .to-contents {
-      transform: scale(.55);
-      transform-origin: 0 0;
-      transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-
-    .avatar {
-      border-radius: 12px;
-      height: 24px;
-      left: 6px;
-      position: relative;
-      top: 4px;
-      width: 24px;
-    }
-
-    /* name -> 보여지는 이름 */
-    .name {
-      font-size: 14px;
-      line-height: 32px;
-      margin-left: 10px;
-    }
-
-    .top {
-      position: inherit;
-      background: white;
-      display: flex;
-      flex-direction: row;
-      height: 200px;
-      transition: height 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-      width: 300px;
-    }
-
-    .avatar-large {
+    .user {
       border-radius: 50%;
-      height: 80px;
-      margin-left: 12px;
-      position: relative;
-      top: 14px;
-      width: 80px;
-    }
-
-    .name-large {
-      color: black;
-      font-size: 20px;
-      line-height: 70px;
-      margin-left: 20px;
-    }
-
-    .x-touch {
-      align-items: center;
-      align-self: center;
-      cursor: pointer;
-      display: flex;
       height: 50px;
-      justify-content: center;
-      margin-left: auto;
       width: 50px;
-    }
-
-    .x {
       background: black;
-      border-radius: 10px;
-      height: 20px;
-      position: relative;
-      width: 20px;
+      margin-right: 12px;
     }
 
-    .x-touch:hover .x {
-      background: #CB9AFB;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .line1 {
-      background: #6422EB;
-      height: 12px;
-      position: absolute;
-      transform: translateX(9px) translateY(4px) rotate(45deg);
-      width: 2px;
+    .nav-logo-image {
+      height: 40px;
+      margin-left: 40px;
     }
 
-    .line2 {
-      background: #6422EB;
-      height: 12px;
-      position: absolute;
-      transform: translateX(9px) translateY(4px) rotate(-45deg);
-      width: 2px;
+    .nav-logo {
+      height: 40px;
     }
 
-    .bottom {
-      background: #016FAC;
-      color: #444247;
-      font-size: 14px;
-      height: 200px;
-      padding-top: 5px;
-      width: 300px;
-    }
-
-    .row {
-      align-items: center;
+    .nav-main {
       display: flex;
-      flex-direction: row;
-      height: 60px;
+      justify-content: space-around;
+      align-items: center;
+      height: 15vh;
+      background-color: transparent;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr;
+      margin-right: 40px;
     }
 
-    .twitter {
-      margin-left: 16px;
-      height: 30px;
-      position: relative;
-      top: 0px;
-      width: 30px;
-    }
-
-    .medium {
-      height: 30px;
-      margin-left: 16px;
-      position: relative;
-      width: 30px;
-    }
-
-    .link {
-      margin-left: 16px;
-    }
-
-    .link a {
-      color: #444247;
+    .nav-menu a {
+      font-size: 15px;
+      color: #8C8C8C;
       text-decoration: none;
+      /* 글자 간격 2px */
+      letter-spacing: 2px;
+      position: relative;
+      padding: 6PX 12PX;
+
     }
 
-    .link a:hover {
-      color: #777579;
+    .nav-menu a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #016FAC;
+      transition: all .5s ease-out;
     }
 
-    .email.expand {
-      border-radius: 6px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10), 0 6px 6px rgba(0, 0, 0, 0.16);
-      height: 200px;
-      width: 300px;
+    .nav-menu a:hover::after {
+      width: 100%;
+
     }
 
-    .expand .from {
-      opacity: 0;
-      transition: opacity 100ms cubic-bezier(0.4, 0.0, 1, 1);
+    .nav-menu a:hover {
+      cursor: pointer;
+      color: black;
     }
 
-    .expand .from-contents {
-      transform: scale(1.91);
+    .nav-menu a:active {
+      font-weight: bold;
+      color: black;
     }
 
-    .expand .to {
-      opacity: 1;
-      transition: opacity 200ms 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
-    }
+    /* 팝오버 */
+    .Hunter-pop-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 1px;
+    font-family: Microsoft YaHei;
+    background-color: #ffffff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 2px solid #cccccc;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 
-    .expand .to-contents {
-      transform: scale(1);
-    }
+.Hunter-pop-up:before,
+.Hunter-pop-up:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    position: absolute;
+    left: 20px;
+    z-index: 999999;
+}
+
+.Hunter-pop-up-right:before,
+.Hunter-pop-up-right:after {
+    left: auto;
+    right: 20px;
+}
+
+.Hunter-pop-up:before {
+    border-color: transparent transparent #f5f5f5;
+    top: -17px;
+    z-index: 9999999;
+}
+
+.Hunter-pop-up:after {
+    border-color: transparent transparent #c9cbce;
+    top: -20px;
+}
+
+.Hunter-pop-up ul {
+    list-style: none;
+}
+
+.Hunter-pop-up ul li {
+    display: inline-block;
+    position: relative;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.Hunter-pop-up p {
+    font-weight: bold;
+    padding: 0 4px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+.Hunter-pop-up .line {
+    width: 340px;
+    margin: 0 auto;
+    margin-top: 4px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.Hunter-pop-up .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 16px;
+}
+
+.Hunter-pop-up .title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+}
+
+
+
+
+.Hunter-pop-up .Hunter-wrap {
+    position: relative;
+    background: #ffffff;
+    padding: 8px;
+    overflow: auto;
+}
+
+
+    
   </style>
 
 </head>
@@ -261,7 +236,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'main' %}">
         <img src="{% static 'logo_black.png' %}" alt="" width="" height="24" class="d-inline-block align-text-top">
@@ -278,12 +253,13 @@
             <a class="nav-link" aria-current="page" href="{% url 'about_us' %}">About_us</a>
             <a class="nav-link" href="{% url 'sun' %}">Home</a>
 
-            {% if not user.is_authenticated %}
+
             <a class="nav-link" href="{% url 'join' %}">Join</a>
             <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <div class="user"><br></div>
 
 
-            <!-- 모달 -->
+ 
             <div class="container">
               <div class="row">
                 <div class="col-12">
@@ -294,85 +270,124 @@
                 </div>
               </div>
             </div>
-            <!-- 모달여기까지 -->
-            <!-- 또다른 모달 -->
-            <div class="email" onclick="this.classList.add('expand')">
-              <div class="from">
-                <div class="from-contents">
-                  <div class="avatar me"></div>
-                  <div class="name">user</div>
-                </div>
-              </div>
-              <div class="to">
-                <div class="to-contents">
-                  <div class="top">
-                    <!-- 모달 프로필 이미지 -->
-                    <div class="avatar-large me"><br></div>
-                    <div class="name-large">User</div>
-                    <div class="name">User_id</div>
-                  </div>
-                  <div class="x-touch"
-                    onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();">
-                    <div class="x">
-                      <div class="line1"></div>
-                      <div class="line2"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bottom">
-                  <div class="row">
-                    <svg class="twitter" viewBox="0 0 300 244.18703">
-                      <g transform="translate(-539.17946,-568.85777)" id="layer1">
-                        <path id="path3611" style="fill:#1da1f2;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                          d="m 633.89823,812.04479 c 112.46038,0 173.95627,-93.16765 173.95627,-173.95625 0,-2.64628 -0.0539,-5.28062 -0.1726,-7.90305 11.93799,-8.63016 22.31446,-19.39999 30.49762,-31.65984 -10.95459,4.86937 -22.74358,8.14741 -35.11071,9.62551 12.62341,-7.56929 22.31446,-19.54304 26.88583,-33.81739 -11.81284,7.00307 -24.89517,12.09297 -38.82383,14.84055 -11.15723,-11.88436 -27.04079,-19.31655 -44.62892,-19.31655 -33.76374,0 -61.14426,27.38052 -61.14426,61.13233 0,4.79784 0.5364,9.46458 1.58538,13.94057 -50.81546,-2.55686 -95.87353,-26.88582 -126.02546,-63.87991 -5.25082,9.03545 -8.27852,19.53111 -8.27852,30.73006 0,21.21186 10.79366,39.93837 27.20766,50.89296 -10.03077,-0.30992 -19.45363,-3.06348 -27.69044,-7.64676 -0.009,0.25652 -0.009,0.50661 -0.009,0.78077 0,29.60957 21.07478,54.3319 49.0513,59.93435 -5.13757,1.40062 -10.54335,2.15158 -16.12196,2.15158 -3.93364,0 -7.76596,-0.38716 -11.49099,-1.1026 7.78383,24.2932 30.35457,41.97073 57.11525,42.46543 -20.92578,16.40207 -47.28712,26.17062 -75.93712,26.17062 -4.92898,0 -9.79834,-0.28036 -14.58427,-0.84634 27.05868,17.34379 59.18936,27.46396 93.72193,27.46396" />
-                      </g>
-                    </svg>
-                    <div class="link"><a href="https://twitter.com/mikaelainalem">@mikaelainalem</a></div>
-                  </div>
-                  <div class="row">
-                    <svg class="medium" viewBox="0 0 24 24">
-                      <style type="text/css" id="style2">
-                        .st0 {
-                          fill: #3DD87F;
-                        }
+    
 
-                        .st1 {
-                          fill: #FFFFFF;
-                        }
-                      </style>
-                      <g id="Page-1" transform="translate(0,1)">
-                        <g id="Monogram">
-                          <rect id="Rectangle-path" x="0" y="-1" class="st0" width="24" height="24"
-                            style="fill:#000000;fill-opacity:1;stroke-width:1.090909" />
-                          <path id="Shape" class="st1"
-                            d="m 6.3,7.6 c 0,-0.2 -0.1,-0.4 -0.2,-0.5 l -1.3,-1.7 v -0.2 h 4.3 l 3.3,7.3 2.9,-7.3 h 4.1 v 0.2 l -1.2,1.1 c -0.1,0.1 -0.2,0.2 -0.1,0.3 v 8.3 c 0,0.1 0,0.3 0.1,0.3 l 1.2,1.1 v 0.2 h -5.8 v -0.2 l 1.2,-1.2 c 0.1,-0.1 0.1,-0.2 0.1,-0.3 v -6.6 l -3.3,8.4 h -0.4 l -4,-8.4 v 5.6 c 0,0.2 0,0.5 0.2,0.6 l 1.6,1.9 v 0.2 h -4.4 v -0.2 l 1.5,-1.8 c 0.2,-0.2 0.2,-0.4 0.2,-0.6 z"
-                            inkscape:connector-curvature="0" style="fill:#ffffff" />
-                        </g>
-                      </g>
-                    </svg>
-                    <div class="link"><a href="https://medium.com/@mikael_ainalem">@mikael_ainalem</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
-          <!-- 또다른모달 여기까지 -->
 
-          {% endif %}
 
-          {% if user.is_authenticated %}
-          <a class="nav-link" href="{% url 'login' %}">Pet</a>
-          <a class="nav-link" href="{% url 'login' %}">{{user.username}}</a>
-          {% endif %}
+
         </div>
       </form>
     </div>
     </div>
+  </nav> -->
+
+  <nav class="nav-main">
+    <div class="nav">
+      <a class="navbar-brand" href="{% url 'main' %}">
+        <img src="{% static 'logo_black.png' %}" class="nav-logo-image"></a>
+      <a class="navbar-brand" href="{% url 'main' %}">
+        <img src="{% static 'little_friends.png' %}" class="nav-logo"></a>
+    </div>
+    <div class="nav-menu">
+      <a href="{% url 'about_us' %}">About us</a>
+      <a href="{% url 'sun' %}">Home</a>
+      {% if not user.is_authenticated %}
+      <a href="{% url 'join' %}">Join</a>
+      <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <a href="{% url 'login' %}">Pet</a>
+      <a href="{% url 'login' %}">{{user.username}}</a>
+      {% endif %}
+<!-- 팝오버 -->
+<script type="text/javascript"></script>
+
+        
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+                <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                <script type="text/javascript" src="js/jquery-popup.js"></script>
+                <script>
+                    $().ready(function(e) {
+        
+                        var popupEvent = function() {
+                        }
+        
+                        $('#popupReturn').hunterPopup({
+                            width: '320px',
+                            height: '200px',
+                            title: "jQuery hunterPopup Demo",
+                            content: $('#tableContent'),
+                            event: popupEvent
+                        });
+        
+                    });
+                </script>
+        
+        <script type="text/javascript">
+        
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36251023-1']);
+            _gaq.push(['_setDomainName', 'jqueryscript.net']);
+            _gaq.push(['_trackPageview']);
+          
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+          
+          </script>
+
+                <input type="button" id="popupReturn" value="User"  class="btn btn-danger">
+        
+                <div id="tableContent" style="display:none">
+                    <div>
+                       
+                            <div class="panel-heading">User name</div>
+                            <div class="panel-heading">User ID</div><hr>
+        
+                            <div class="panel-body form-inline dept1"></div>
+                                <a class="btn btn-default" id="001">Item</a>
+                                <a class="btn btn-default" id="002">Item</a>
+                                <a class="btn btn-default" id="003">Item</a>
+                       
+                        <div class="panel panel-default">
+                        <a class="btn btn-default" id="002">Item</a>
+                        <a class="btn btn-default" id="003">Item</a></div>
+                    </div>
+                </div>
+        
+        <script type="text/javascript">
+        
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36251023-1']);
+          _gaq.push(['_setDomainName', 'jqueryscript.net']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+        </script>
+
+    </div>
   </nav>
-
-
-
-
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus"
+            title="USER NAME" data-content="이야 이야이양" data-placement="bottom">User</a>
+        </p>
+      </div>
+    </div>
+  </div> -->
 
 
 
@@ -382,14 +397,100 @@
     {% endblock %}
   </div>
 
-
-  <!-- 모달 -->
-
-
-
-
-
 </html>
 
 <!--base.html에는 공통적으로 들어갈 부분을 작성해준다-->
 <!--템플릿 태그 block 으로 HTML 내에 들어갈 수 있는 공간생성. base.html을 확장해 다른 템플릿에도 가져다 쓸 수 있도록 함.-->
+
+
+<script>
+(function($) {
+  $.hunterPopup = function(box, options) {
+      var box = $(box);
+      var defaults = {
+          title: 'jQuery hunterPopup Demo',
+          placement: 'left',
+          width: '100%',
+          height: '100%',
+          content: $('<div><h3>jQuery hunterPopup Demo</h3></div>'),
+          event: closePopup
+      };
+      var obj = $.extend(defaults, options);
+
+      var template = $('<div class="Hunter-pop-up" id="Hunter-pop-up"><a class="close"><i class="glyphicon glyphicon-remove"></i></a><div class="arrow"></div><h3 class="title"></h3><div id="Hunter_pop_wrap" class="Hunter-wrap"></div></div>');
+      var title = $('.title', template);
+      var pop_wrap = $('#Hunter_pop_wrap', template);
+
+      $(document).click(function() {
+          template.remove();
+      });
+
+      box.click(function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          $('.Hunter-pop-up').remove();
+          var _this = $(this);
+          var offset = _this.offset();
+          var top = offset.top + _this.outerHeight() + 15;
+          if(obj.placement == 'left') {
+              template.css({
+                  'left': offset.left,
+                  'top': top
+              });
+          } else {
+              template.addClass("Hunter-pop-up-right");
+              template.css({
+                  'left': offset.left - obj.width + _this.width() / 2,
+                  'top': top
+              });
+          }
+
+          buildPopup();
+          $('body').append(template);
+          $('.Hunter-pop-up').click(function(event) {
+              event.stopPropagation();
+          });
+
+          //调用弹出层内容注册的事件。
+          obj.event();
+
+      });
+
+      function buildPopup() {
+          buildPopupContent();
+          closePopup();
+      };
+
+      function buildPopupContent() {
+          title.text(obj.title);
+
+          //构造弹出层的内容
+          var _content = obj.content;
+          _content.show();
+          pop_wrap.children().remove();
+          pop_wrap.append(_content);
+          pop_wrap.width(obj.width);
+          pop_wrap.height(obj.height);
+      };
+
+      function closePopup() {
+          template.on('click', '.close', function(event) {
+              event.preventDefault();
+              event.stopPropagation();
+              template.remove();
+          });
+      }
+  };
+
+  $.fn.extend({
+      hunterPopup: function(options) {
+          options = $.extend({}, options);
+          this.each(function() {
+              new $.hunterPopup(this, options);
+          });
+          return this;
+      }
+
+  });
+})(jQuery);
+</script>
