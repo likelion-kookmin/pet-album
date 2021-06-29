@@ -13,105 +13,40 @@
 </head>
 <body>
   <div class="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-            <li class="nav-item dropdown">
-              <a class="navbar-brand dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">user01
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="#">user02</a></li>
-                <li><a class="dropdown-item" href="#">user03</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div class="form-check-inline">
-            <label class="form-check-label text-white" for="showPublic">
-              전체 공개
-            </label>
-            <input class="form-check-input" type="radio" name="showType" id="showPublic" checked>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label text-white" for="showPrivate">
-              전체 비공개
-            </label>
-            <input class="form-check-input" type="radio" name="showType" id="showPrivate">
-          </div>
-          <button class="save-button" type="button">앨범 저장하기</button>
+  {% include "album_list.html" %}
+    <div class="detail-container">
+      <div class="moment-info hide" id="detailPage">
+        <input type="text" class="form-control" id="datePicker">
+        <div class="moment-container">
+          <img src="{% static 'sample01.jpg' %}" class="moment__image"></img>
+          <button class="secret-button"></button>
+        </div>
+        <input type="text" class="form-control" id="comment" placeholder="문구">
+        <div class="button-container">
+          <button class="delete-button" type="button">삭제하기</button>
+          <button class="edit-button" type="button">사진 변경</button>
         </div>
       </div>
-    </nav>
-    <div class="">
-      <aside class="aside-container">
-        <span class="aside__title">정렬</span>
-        <div class="form-check-inline">
-          <label class="form-check-label" for="newest">
-            최신순
-          </label>
-          <input class="form-check-input" type="radio" name="sorting" id="newest">
+      <div class="upload-info" id="uploadPage">
+        <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
+            <div id="dropZone" class="dropbox">
+                <div id="fileDragDesc">
+                  <i class="bi bi-plus-lg"></i>
+                  <div>Drag and drop to upload</div>
+                  <div></div>
+                  <p>(up to 10MB)<br>PNG, JPEG are supported</p>
+                </div>
+                <table id="fileListTable" class="upload-table">
+                    <tbody id="fileTableTbody">
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <div class="upload-btn-wrapper hide" id="uploadButton">
+          <label for="input_file" class="upload-btn"></label>
+          <input type="file" id="input_file" multiple="multiple"/>
         </div>
-        <div class="form-check-inline">
-          <label class="form-check-label" for="oldest">
-            오래된순
-          </label>
-          <input class="form-check-input" type="radio" name="sorting" id="oldest" checked>
-        </div>
-        <div class="list-container">
-          <ol class="image-list">
-            {% for album in albums %}
-            <li class="image-item">
-              {% if album.album_image %}
-              <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
-              {% endif %}
-              <span class="hide">{{album.comment}}</span>
-              <time class="hide">{{album.image_datetime}}</time>
-            </li>
-            {% endfor %}
-          </ol>
-          <button onclick=showUpload() class="upload-button">
-            <i class="bi bi-plus-lg"></i>
-          </button>
-        </div>
-      </aside>
-      <div class="detail-container">
-        <div class="moment-info hide" id="detailPage">
-          <input type="text" class="form-control" id="datePicker">
-          <div class="moment-container">
-            <img src="{% static 'sample01.jpg' %}" class="moment__image"></img>
-            <button class="secret-button"></button>
-          </div>
-          <input type="text" class="form-control" id="comment" placeholder="문구">
-          <div class="button-container">
-            <button class="delete-button" type="button">삭제하기</button>
-            <button class="edit-button" type="button">사진 변경</button>
-          </div>
-        </div>
-        <div class="upload-info" id="uploadPage">
-          <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
-              <div id="dropZone" class="dropbox">
-                  <div id="fileDragDesc">
-                    <i class="bi bi-plus-lg"></i>
-                    <div>Drag and drop to upload</div>
-                    <div></div>
-                    <p>(up to 10MB)<br>PNG, JPEG are supported</p>
-                  </div>
-                  <table id="fileListTable" class="upload-table">
-                      <tbody id="fileTableTbody">
-                      </tbody>
-                  </table>
-              </div>
-          </form>
-          <div class="upload-btn-wrapper hide" id="uploadButton">
-            <label for="input_file" class="upload-btn"></label>
-            <input type="file" id="input_file" multiple="multiple"/>
-          </div>
-          <input type="button" onclick="uploadFile(); return false;" class="upload-submit" value="파일 업로드">
-        </div>
+        <input type="button" onclick="uploadFile(); return false;" class="upload-submit" value="파일 업로드">
       </div>
     </div>
   </div>

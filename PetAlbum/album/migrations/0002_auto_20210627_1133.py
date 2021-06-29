@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='album',
             name='comment',
-            field=models.TextField(null=True),
+            field=models.TextField(blank=True),
         ),
         migrations.AddField(
             model_name='album',
