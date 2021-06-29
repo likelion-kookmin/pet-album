@@ -1,0 +1,496 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- 네비바 -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- 팝오버 -->
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script>
+    // 팝오버
+    $(function () {
+
+      $('[data-toggle="popover"]').popover()
+      $('.popover-dismiss').popover({
+        trigger: 'focus'
+      })
+      $('.example-popover').popover({
+        container: 'body'
+      })
+      $('#element').popover('toggle')
+      $('#myPopover').on('hidden.bs.popover', function () {
+        // do something…
+      })
+
+    });
+  </script>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    /* navbar */
+
+    .user {
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      background: black;
+      margin-right: 12px;
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .nav-logo-image {
+      height: 40px;
+      margin-left: 40px;
+    }
+
+    .nav-logo {
+      height: 40px;
+    }
+
+    .nav-main {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 15vh;
+      background-color: transparent;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr;
+      margin-right: 40px;
+    }
+
+    .nav-menu a {
+      font-size: 15px;
+      color: #8C8C8C;
+      text-decoration: none;
+      /* 글자 간격 2px */
+      letter-spacing: 2px;
+      position: relative;
+      padding: 6PX 12PX;
+
+    }
+
+    .nav-menu a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #016FAC;
+      transition: all .5s ease-out;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+
+    }
+
+    .nav-menu a:hover {
+      cursor: pointer;
+      color: black;
+    }
+
+    .nav-menu a:active {
+      font-weight: bold;
+      color: black;
+    }
+
+    /* 팝오버 */
+    .Hunter-pop-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 1px;
+    font-family: Microsoft YaHei;
+    background-color: #ffffff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 2px solid #cccccc;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Hunter-pop-up:before,
+.Hunter-pop-up:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    position: absolute;
+    left: 20px;
+    z-index: 999999;
+}
+
+.Hunter-pop-up-right:before,
+.Hunter-pop-up-right:after {
+    left: auto;
+    right: 20px;
+}
+
+.Hunter-pop-up:before {
+    border-color: transparent transparent #f5f5f5;
+    top: -17px;
+    z-index: 9999999;
+}
+
+.Hunter-pop-up:after {
+    border-color: transparent transparent #c9cbce;
+    top: -20px;
+}
+
+.Hunter-pop-up ul {
+    list-style: none;
+}
+
+.Hunter-pop-up ul li {
+    display: inline-block;
+    position: relative;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.Hunter-pop-up p {
+    font-weight: bold;
+    padding: 0 4px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+.Hunter-pop-up .line {
+    width: 340px;
+    margin: 0 auto;
+    margin-top: 4px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.Hunter-pop-up .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 16px;
+}
+
+.Hunter-pop-up .title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+}
+
+
+
+
+.Hunter-pop-up .Hunter-wrap {
+    position: relative;
+    background: #ffffff;
+    padding: 8px;
+    overflow: auto;
+}
+
+
+    
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'main' %}">
+        <img src="{% static 'logo_black.png' %}" alt="" width="" height="24" class="d-inline-block align-text-top">
+        little_friends
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" aria-current="page" href="{% url 'about_us' %}">About_us</a>
+            <a class="nav-link" href="{% url 'sun' %}">Home</a>
+
+
+            <a class="nav-link" href="{% url 'join' %}">Join</a>
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <div class="user"><br></div>
+
+
+ 
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <p>
+                    <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover"
+                      data-trigger="focus" title="USER NAME" data-content="이야 이야이양" data-placement="bottom">User</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+
+
+          </div>
+
+
+
+        </div>
+      </form>
+    </div>
+    </div>
+  </nav> -->
+
+  <nav class="nav-main">
+    <div class="nav">
+      <a class="navbar-brand" href="{% url 'main' %}">
+        <img src="{% static 'logo_black.png' %}" class="nav-logo-image"></a>
+      <a class="navbar-brand" href="{% url 'main' %}">
+        <img src="{% static 'little_friends.png' %}" class="nav-logo"></a>
+    </div>
+    <div class="nav-menu">
+      <a href="{% url 'about_us' %}">About us</a>
+      <a href="{% url 'sun' %}">Home</a>
+      {% if not user.is_authenticated %}
+      <a href="{% url 'join' %}">Join</a>
+      <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <a href="{% url 'login' %}">Pet</a>
+      <a href="{% url 'login' %}">{{user.username}}</a>
+      {% endif %}
+<!-- 팝오버 -->
+<script type="text/javascript"></script>
+
+        
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+                <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                <script type="text/javascript" src="js/jquery-popup.js"></script>
+                <script>
+                    $().ready(function(e) {
+        
+                        var popupEvent = function() {
+                        }
+        
+                        $('#popupReturn').hunterPopup({
+                            width: '320px',
+                            height: '200px',
+                            title: "jQuery hunterPopup Demo",
+                            content: $('#tableContent'),
+                            event: popupEvent
+                        });
+        
+                    });
+                </script>
+        
+        <script type="text/javascript">
+        
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36251023-1']);
+            _gaq.push(['_setDomainName', 'jqueryscript.net']);
+            _gaq.push(['_trackPageview']);
+          
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+          
+          </script>
+
+                <input type="button" id="popupReturn" value="User"  class="btn btn-danger">
+        
+                <div id="tableContent" style="display:none">
+                    <div>
+                       
+                            <div class="panel-heading">User name</div>
+                            <div class="panel-heading">User ID</div><hr>
+        
+                            <div class="panel-body form-inline dept1"></div>
+                                <a class="btn btn-default" id="001">Item</a>
+                                <a class="btn btn-default" id="002">Item</a>
+                                <a class="btn btn-default" id="003">Item</a>
+                       
+                        <div class="panel panel-default">
+                        <a class="btn btn-default" id="002">Item</a>
+                        <a class="btn btn-default" id="003">Item</a></div>
+                    </div>
+                </div>
+        
+        <script type="text/javascript">
+        
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36251023-1']);
+          _gaq.push(['_setDomainName', 'jqueryscript.net']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+        </script>
+
+    </div>
+  </nav>
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus"
+            title="USER NAME" data-content="이야 이야이양" data-placement="bottom">User</a>
+        </p>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+  <div class="container">
+    {% block container %}
+    {% endblock %}
+  </div>
+
+</html>
+
+<!--base.html에는 공통적으로 들어갈 부분을 작성해준다-->
+<!--템플릿 태그 block 으로 HTML 내에 들어갈 수 있는 공간생성. base.html을 확장해 다른 템플릿에도 가져다 쓸 수 있도록 함.-->
+
+
+<script>
+(function($) {
+  $.hunterPopup = function(box, options) {
+      var box = $(box);
+      var defaults = {
+          title: 'jQuery hunterPopup Demo',
+          placement: 'left',
+          width: '100%',
+          height: '100%',
+          content: $('<div><h3>jQuery hunterPopup Demo</h3></div>'),
+          event: closePopup
+      };
+      var obj = $.extend(defaults, options);
+
+      var template = $('<div class="Hunter-pop-up" id="Hunter-pop-up"><a class="close"><i class="glyphicon glyphicon-remove"></i></a><div class="arrow"></div><h3 class="title"></h3><div id="Hunter_pop_wrap" class="Hunter-wrap"></div></div>');
+      var title = $('.title', template);
+      var pop_wrap = $('#Hunter_pop_wrap', template);
+
+      $(document).click(function() {
+          template.remove();
+      });
+
+      box.click(function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          $('.Hunter-pop-up').remove();
+          var _this = $(this);
+          var offset = _this.offset();
+          var top = offset.top + _this.outerHeight() + 15;
+          if(obj.placement == 'left') {
+              template.css({
+                  'left': offset.left,
+                  'top': top
+              });
+          } else {
+              template.addClass("Hunter-pop-up-right");
+              template.css({
+                  'left': offset.left - obj.width + _this.width() / 2,
+                  'top': top
+              });
+          }
+
+          buildPopup();
+          $('body').append(template);
+          $('.Hunter-pop-up').click(function(event) {
+              event.stopPropagation();
+          });
+
+          //调用弹出层内容注册的事件。
+          obj.event();
+
+      });
+
+      function buildPopup() {
+          buildPopupContent();
+          closePopup();
+      };
+
+      function buildPopupContent() {
+          title.text(obj.title);
+
+          //构造弹出层的内容
+          var _content = obj.content;
+          _content.show();
+          pop_wrap.children().remove();
+          pop_wrap.append(_content);
+          pop_wrap.width(obj.width);
+          pop_wrap.height(obj.height);
+      };
+
+      function closePopup() {
+          template.on('click', '.close', function(event) {
+              event.preventDefault();
+              event.stopPropagation();
+              template.remove();
+          });
+      }
+  };
+
+  $.fn.extend({
+      hunterPopup: function(options) {
+          options = $.extend({}, options);
+          this.each(function() {
+              new $.hunterPopup(this, options);
+          });
+          return this;
+      }
+
+  });
+})(jQuery);
+</script>
