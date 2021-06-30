@@ -34,18 +34,22 @@
 </nav>
 <aside class="aside-container">
   <span class="aside__title">정렬</span>
-  <div class="form-check-inline">
-    <label class="form-check-label" for="newest">
-      최신순
-    </label>
-    <input class="form-check-input" type="radio" name="sorting" id="newest">
-  </div>
-  <div class="form-check-inline">
-    <label class="form-check-label" for="oldest">
-      오래된순
-    </label>
-    <input class="form-check-input" type="radio" name="sorting" id="oldest">
-  </div>
+  <select onchange="goLink(this.value)" id="order-select">
+    <div class="form-check-inline">
+      <option class="form-check-input" type="radio" name="sorting" id="newest" value="newest">
+        <label class="form-check-label" for="newest">
+          최신순
+        </label>
+      </option>
+    </div>
+    <div class="form-check-inline">
+      <option class="form-check-input newest" type="radio" name="sorting" id="oldest" value="oldest" checked>
+        <label class="form-check-label oldest" for="oldest" value="?oldest">
+          오래된순
+        </label>
+      </option>
+    </div>
+  </select>
   <div class="list-container">
     <ol class="image-list">
       {% for album in albums %}
