@@ -100,11 +100,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ obj.contents }}</td>
-                        <td> </td>
+                        <p><td>{{ obj.contents }}</td></p>
+                    </tr>
+                    <tr style="border-color: white;">
+                        {% if obj.cs_image %}
+                            <p><td><img src = "{{ obj.cs_image.url }}" alt="" height="300"></td></p>
+                        {% endif %}
                     </tr>
                 </tbody>
             </table>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;CS담당자</p>
+            <p>{{ comment.content }}</p>
+            <p>{{ comment.updated_date | date:"Y.m.d "}}</p>
+       
         <br>
         <div class=link>
             <a href="{% url 'mypage' %}">list</a> 
