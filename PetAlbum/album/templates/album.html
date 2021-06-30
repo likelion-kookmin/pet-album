@@ -19,9 +19,13 @@
       <div class="album-info">
         <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">
           <div class="pet__name">user</div>
-          <span class="user__detail">user house</span>
+          <a href="">
+            <span class="user__detail">user house</span>
+          </a>
           <span class="user__detail"> · </span>
-          <span class="user__detail">user name</span>
+          <a href="">
+            <span class="user__detail">user name</span>
+          </a>
       </div>
       <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -48,10 +52,9 @@
         </button>
       </div>
       <label for="customRange1" class="form-label"></label>
-      <input type="range" class="form-range" id="customRange1">
-      <!-- <div class="slide-container">
-        <input type="range" min="1" max="100" value="50" class="slider" id="imageRange">
-      </div> -->
+      <input type="range" min="0" max="100" class="form-range" id="rangeSlider">
+      <p>Value: <span id="demo"></span></p>
+
       <div class="button-container">
         <button id="playPauseBtn" type="button" class="play-pause-button">
           <i class="bi bi-pause-fill"></i>
@@ -133,5 +136,14 @@
       modal.hide();
   });
 
+  //range slider 
+  var rangeslider = document.getElementById("rangeSlider");
+  var output = document.getElementById("demo");
+  output.innerHTML = rangeslider.value;
+    
+  rangeslider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+  
 </script>
 </html>

@@ -44,7 +44,7 @@
     <label class="form-check-label" for="oldest">
       오래된순
     </label>
-    <input class="form-check-input" type="radio" name="sorting" id="oldest" checked>
+    <input class="form-check-input" type="radio" name="sorting" id="oldest">
   </div>
   <div class="list-container">
     <ol class="image-list">
@@ -67,3 +67,31 @@
     </a>
   </div>
 </aside>
+
+<script type="text/javascript">
+  var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1));
+          sURLVariables = sPageURL.split('&');
+          var sParameterName;
+
+      for (var i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+      }
+  };
+  var order = getUrlParameter('order');
+  var sel = document.getElementById("order-select");
+
+  function goLink(value) {
+      location.href = '?order='+ value;
+  }
+
+  if(order == 'newest'){
+      sel[0].selected = true;
+  }else {
+      sel[1].selected = true;
+  };
+</script>

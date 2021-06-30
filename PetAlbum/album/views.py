@@ -9,6 +9,11 @@ def album(request):
 
 def album_add(request):
   albums = Album.objects.all()
+  order = request.GET.get('order', 'newest')
+  if order == 'oldest':
+    albums = albums.order_by('image_datetime')
+  else:
+    albums = albums.order_by('-image_datetime')
   form = AlbumForm()
   return render(request, 'album_add.html', {'albums':albums, 'form':form})
 
@@ -31,6 +36,11 @@ def album_create(request):
 
 def album_edit(request, album_id):
   albums = Album.objects.all()
+  order = request.GET.get('order', 'newest')
+  if order == 'oldest':
+    albums = albums.order_by('image_datetime')
+  else:
+    albums = albums.order_by('-image_datetime')
   edit_album = get_object_or_404(Album, pk = album_id)
   return render(request, 'album_edit.html', {'albums':albums, 'album':edit_album})
 
