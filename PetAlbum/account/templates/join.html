@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+
+<head>
+
+
+    <style>
+        .checkbox-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+        }
+        .form-group {
+            text-align: left;
+        }
+
+
+        .logo-image {
+            margin-top: 60px;
+            height: 60px;
+        }
+
+        .logo-text {
+
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+
+        .form-check {
+            display: block;
+            margin: 30px 0;
+            padding-left: 1.5em;
+            max-width: 450px;
+        }
+
+        .form-switch {
+            display: block;
+            margin: 30px 0;
+            padding-left: 1.5em;
+            max-width: 450px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #016FAC;
+            border-color: #016FAC;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left
+        }
+    </style>
+</head>
+
+
+<div class="form-signin">
+    <div class="raw">
+        <div class="col-12">
+            <div class="col-12 text-center">
+                <img class="logo-image" src="{% static 'logo_black.png' %}"><br>
+                <div class="logo-text">little friends</div>
+            </div>
+            <h2>회원가입</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <p><label for="id_username" >아이디</label><br> <input type="text" class="form-control" name="username"
+                            maxlength="150" placeholder="아이디를 입력하세요" autocapitalize="none" autocomplete="username"
+                            autofocus="" required="" id="id_username"> <span class="helptext"></span></p>
+                </div>
+                <div class="form-group">
+                    <p><label for="id_password1">비밀번호</label><br> <input type="password" name="password1"
+                            placeholder="비밀번호를 입력하세요" autocomplete="new-password" class="form-control" required=""
+                            id="id_password1"> <span class="helptext"></span></p>
+                </div>
+                <div class="form-group">
+                    <p><label for="id_password2">비밀번호</label><br> <input type="password" name="password2"
+                            placeholder="비밀번호를 입력하세요" autocomplete="new-password" class="form-control" required=""
+                            id="id_password2"> <span class="helptext">
+                        </span></p>
+                        <span style="color:red;"><strong>{{error}}</strong> </span>
+
+                </div>
+                <!-- <div class="form-check form-switch">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">반려동물 앨범 서비스 이용하기</label>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                </div> -->
+
+                <input type="submit" class="btn btn-primary" value="Sign Up">
+
+        </div>
+    </div>
+    </div>
+</form>
+</form>
+    
+    <!-- <form action="{%url 'join'%}" method="post">
+    
+    <div class="form-floating mb-3">
+        {% if form.errors %}
+        <p style="color:red;">양식에 맞게 작성해주세요.</p>
+        {% endif %}
+        <input type="email" class="form-control" id="floatingInput" placeholder="아이디">
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호">
+    </div>
+    <form method="post" action="{% url 'join' %}">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <div class="form-check form-switch">
+        <label class="form-check-label" for="flexSwitchCheckChecked">반려동물 앨범 서비스 이용하기(팝오버&툴팁)</label>
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+    </div> -->
+
+    <!-- 
+
+
+    <div class="agree">
+        <div class="all_agree">
+          <input type="checkbox" id="a1" name="전체동의" />
+          <label for="a1"><span>전체약관동의</span></label>
+        </div>
+      </div>
+      
+      <ul>
+        <li><input type="checkbox" id="a2" name="전체동의" />
+          <label for="a2"><span>이용약관동의 (필수)</span></label>
+        </li>
+      
+        <li><input type="checkbox" id="a3" name="전체동의" />
+          <label for="a3"><span>개인정보수집이용 동의 (필수)</span></label>
+        </li>
+      
+        <li><input type="checkbox" id="a4" name="전체동의" />
+          <label for="a4"><span>만 14세 이상 확인 (필수)</span></label>
+        </li>
+      </ul> -->
+
+
+    <!-- 
+
+
+    <div> -->
+    <!-- <ul>
+            <li><span >아이디 </span><br><input type = "text" placeholder = "아이디를 입력하세요" class = 'box'/></li>
+            <li><span '>패스워드 </span><br><input type = "password" placeholder = "패스워드를 입력하세요" class = 'box'/>
+                <br><span class = 'necessary' >필수 정보입니다.</span></li>
+            <li><span >패스워드 확인 </span><br><input type = "password" placeholder = "다시 패스워드를 입력하세요" class = 'box' />
+                <br><span class = 'necessary' >필수 정보입니다.</span></li>
+        
+    </ul>
+    </div>
+
+    <div class="input password"> <label for="password"class="label password">비밀번호</label> 
+        <input type="password" id="password" class="form-input" placeholder="비밀번호를 입력해주세요.">
+        <div class="eyes">
+            <i class="fa fa-eye fa-lg"></i>
+        </div>
+    </div> -->
+
+
+
+    <!-- 
+    <button type="submit" style="color: #016FAC;"> 회원가입 </button> <br> -->
+<!-- 
+    </form> -->
+
+    {% endblock %}
