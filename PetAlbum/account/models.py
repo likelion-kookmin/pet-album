@@ -12,3 +12,4 @@ class CustomUser(AbstractUser):
     )
     # pet = models.CharField(max_length=2, choices=pet_choices, blank=True)
     # like= models.ManyToManyField('Pet_day', blank=True, related_name='like_user')
+ 
