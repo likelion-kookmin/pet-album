@@ -42,9 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    'pet',
-=======
+    'pet', 
     # sejin-album
     'album',
     # hyunji-mypage
@@ -55,7 +53,6 @@ INSTALLED_APPS = [
     'main',
     'home',
     'my_pet',
->>>>>>> 2e4beafaa292c2b8e3a13e7e8be783b54de2b977
 ]
 
 MIDDLEWARE = [
@@ -137,12 +134,21 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'pet', 'static')]
+# 미디어 파일을 관리할 루트 media 디렉터리
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# 각 media file에 대한 URL prefix
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = [ 
+    os.path.join(BASE_DIR, "static"),
+]
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'album', 'static')] #static 파일이 있는 경로 작성
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'account', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'PetAlbum', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'my_pet', 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'pet', 'static')]
 # 현재 static 파일들이 어디에 있는지
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #static 파일을 어디에 모을건지 

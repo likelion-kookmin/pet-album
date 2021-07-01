@@ -1,7 +1,7 @@
 from django.contrib import admin
-from models import *
+from pet.models import *
 
-# Register your models here.
+# # Register your models here.
 admin.register(Pet)
 admin.register(Pet_page)
 admin.register(Pet_day)
