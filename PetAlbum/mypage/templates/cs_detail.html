@@ -54,8 +54,6 @@
 
 <body>
     <div class="user">
-        <h2>User name</h2>
-        <br><h4>User ID</h4> 
     </div>
     <div class="home">
         <div class = "tabs">
@@ -113,9 +111,13 @@
                     </tr>
                 </tbody>
             </table>
+            <br><br>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;CS담당자</p>
-            <p>{{ comment.content }}</p>
-            <p>{{ comment.updated_date | date:"Y.m.d "}}</p>
+            {% for comment in comments %}
+                <p>&nbsp;&nbsp;{{ comment.updated_date | date:"Y.m.d "}}</p>
+                <br><br>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;{{ comment.content }} </div>
+            {% endfor %}
        
         <br>
         <div class=link>

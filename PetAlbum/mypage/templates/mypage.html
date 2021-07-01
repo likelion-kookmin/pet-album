@@ -118,8 +118,12 @@
 
 <body>
     <div class="user">
-        <h2>User name</h2>
-        <br><h4>User ID</h4> 
+        <!--{% for custom_user in custom_users %}-->
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ custom_user.nickname }}</p>
+            {% if custom_user.user_image %}
+                <p><img src = "{{ custom_user.user_image.url }}" alt="" height="300"></p>
+            {% endif %}
+        <!--{% endfor %}-->
     </div>
     <div class="home">
         <div class = "tabs">

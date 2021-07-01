@@ -3,16 +3,19 @@ from django.utils import timezone
 from .models import Notice
 from .models import Cs
 from .models import Cs_comment
+from account.models import *
 from django.views.generic import ListView
 from django.core.paginator import Paginator
+
 
 # Create your views here.
 
 def mypage(request):
     mypages = Notice.objects.all()
     objs = Cs.objects.all()
-    comments = Cs_comment.objects.all()
-    return render(request, 'mypage.html', {'mypages':mypages, 'objs':objs, 'comments':comments})
+    if (request.user.is_authenticated):
+        custom_user = request.user
+    return render(request, 'mypage.html', {'mypages':mypages, 'objs':objs, 'custom_user':custom_user})
 
 def detail(request, mypage_id):
     mypage_detail = get_object_or_404(Notice, pk=mypage_id)
@@ -20,13 +23,8 @@ def detail(request, mypage_id):
 
 def cs(request, obj_id):
     obj_detail = get_object_or_404(Cs, pk=obj_id)
-    # find comment using obj
-    comment_detail = get_object_or_404(Cs_comment, cs_id=obj_id)
-    return render(request, 'cs_detail.html', {'obj':obj_detail, 'comment': comment_detail})
-
-def cs_comment(request, comment_id):
-    comment_detail = get_object_or_404(Cs_comment, pk=comment_id)
-    return render(request, 'cs_detail.html', {'comment':comment_detail})
+    comments = Cs_comment.objects.filter(cs_id=obj_id)
+    return render(request, 'cs_detail.html', {'obj':obj_detail, 'comments': comments})
 
 def create(request):
     if request.method == 'GET':
