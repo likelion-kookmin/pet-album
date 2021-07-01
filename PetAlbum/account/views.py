@@ -18,7 +18,7 @@ def login_view(request): #로그인 창을 띄우는 함수
             user = authenticate(request=request, username=username, password=password)#user라는 객체를 만들것임, 이건 인증을 받는 객체임  authenticate(매개변수)
             if user is not None:  #user가 존재할때
                 login(request, user)
-            return redirect("sun")
+            return redirect("main")
         return redirect("login")
         
     else:

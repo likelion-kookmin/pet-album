@@ -25,7 +25,7 @@
   <!-- 팝오버 -->
   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'fonts.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'fonts.css' %}" />
   <script>
     // 팝오버
     $(function () {
@@ -127,107 +127,104 @@
 
     /* 팝오버 */
     .Hunter-pop-up {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    padding: 1px;
-    font-family: Microsoft YaHei;
-    background-color: #ffffff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 2px solid #cccccc;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      padding: 1px;
+      font-family: Microsoft YaHei;
+      background-color: #ffffff;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 2px solid #cccccc;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
 
-.Hunter-pop-up:before,
-.Hunter-pop-up:after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    border-style: solid;
-    position: absolute;
-    left: 20px;
-    z-index: 999999;
-}
+    .Hunter-pop-up:before,
+    .Hunter-pop-up:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      position: absolute;
+      left: 20px;
+      z-index: 999999;
+    }
 
-.Hunter-pop-up-right:before,
-.Hunter-pop-up-right:after {
-    left: 250px;
-    right: 20px;
-}
+    .Hunter-pop-up-right:before,
+    .Hunter-pop-up-right:after {
+      left: 250px;
+      right: 20px;
+    }
 
-.Hunter-pop-up:before {
-    border-color: transparent transparent #f5f5f5;
-    top: -17px;
-    z-index: 9999999;
-}
+    .Hunter-pop-up:before {
+      border-color: transparent transparent #f5f5f5;
+      top: -17px;
+      z-index: 9999999;
+    }
 
-.Hunter-pop-up:after {
-    border-color: transparent transparent #c9cbce;
-    top: -20px;
-}
+    .Hunter-pop-up:after {
+      border-color: transparent transparent #c9cbce;
+      top: -20px;
+    }
 
-.Hunter-pop-up ul {
-    list-style: none;
-}
+    .Hunter-pop-up ul {
+      list-style: none;
+    }
 
-.Hunter-pop-up ul li {
-    display: inline-block;
-    position: relative;
-    margin: 4px;
-    cursor: pointer;
-}
+    .Hunter-pop-up ul li {
+      display: inline-block;
+      position: relative;
+      margin: 4px;
+      cursor: pointer;
+    }
 
-.Hunter-pop-up p {
-    font-weight: bold;
-    padding: 0 4px;
-    margin-top: 4px;
-    margin-bottom: 10px;
-}
+    .Hunter-pop-up p {
+      font-weight: bold;
+      padding: 0 4px;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
 
-.Hunter-pop-up .line {
-    width: 340px;
-    margin: 0 auto;
-    margin-top: 4px;
-    border-bottom: 1px solid #d8d8d8;
-}
+    .Hunter-pop-up .line {
+      width: 340px;
+      margin: 0 auto;
+      margin-top: 4px;
+      border-bottom: 1px solid #d8d8d8;
+    }
 
-.Hunter-pop-up .close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 16px;
-}
+    .Hunter-pop-up .close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 16px;
+    }
 
-.Hunter-pop-up .title {
-    padding: 8px 14px;
-    margin: 0;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 18px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    border-radius: 5px 5px 0 0;
-}
-
-
+    .Hunter-pop-up .title {
+      padding: 8px 14px;
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 18px;
+      background-color: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      border-radius: 5px 5px 0 0;
+    }
 
 
-.Hunter-pop-up .Hunter-wrap {
-    position: relative;
-    background: #ffffff;
-    padding: 8px;
-    overflow: auto;
-}
 
 
-    
+    .Hunter-pop-up .Hunter-wrap {
+      position: relative;
+      background: #ffffff;
+      padding: 8px;
+      overflow: auto;
+    }
   </style>
 
 </head>
@@ -290,86 +287,86 @@
       <a class="navbar-brand" href="{% url 'main' %}">
         <img src="{% static 'little_friends.png' %}" class="nav-logo"></a>
     </div>
-    <div class="nav-menu">  
+    <div class="nav-menu">
       {% if not user.is_authenticated %}
       <a href="{% url 'join' %}">Join</a>
       <a href="{% url 'login' %}">Login</a>
       {% endif %}
       {% if user.is_authenticated %}
 
-<!-- 팝오버 -->
-<script type="text/javascript"></script>
+      <!-- 팝오버 -->
+      <script type="text/javascript"></script>
 
-        
-        <script type="text/javascript"
-        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-                <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-                <script type="text/javascript" src="js/jquery-popup.js"></script>
-                <script>
-                    $().ready(function(e) {
-        
-                        var popupEvent = function() {
-                        }
-        
-                        $('#popupReturn').hunterPopup({
-                            width: '300px',
-                            height: '150px',
-                            title: "{{user.username}}",
-                            content: $('#tableContent'),
-                            event: popupEvent
-                        });
-        
-                    });
-                </script>
-        
-        <script type="text/javascript">
-        
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-36251023-1']);
-            _gaq.push(['_setDomainName', 'jqueryscript.net']);
-            _gaq.push(['_trackPageview']);
-          
-            (function() {
-              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-          
-          </script>
 
-                <input type="button" id="popupReturn" value="{{user.username}}"  class="btn btn-danger">
-        
-                <div id="tableContent" style="display:none">
-                    <div>
-                            <div class="panel-body form-inline dept1"></div>
-                                <a class="btn btn-default" id="001" href="">마이페이지</a>
-                                <a class="btn btn-default" id="002" href="">즐겨찾기</a>
-                                <a class="btn btn-default" id="003" href="">설정</a>
-                       
-                        <div class="panel panel-default">
-                        <a class="btn btn-default" id="002" href="">펫 페이지 수정</a>
-                        <a class="btn btn-default" id="003" href="">앨범 수정</a></div>
-                    </div>
-                </div>
-        
-        <script type="text/javascript">
-        
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-36251023-1']);
-          _gaq.push(['_setDomainName', 'jqueryscript.net']);
-          _gaq.push(['_trackPageview']);
-        
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-        
-        </script>
-        <a href="{% url 'login' %}">Pet</a>
-{% endif %}
-<a href="{% url 'sun' %}">Home</a>
+      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script type="text/javascript" src="js/jquery-popup.js"></script>
+      <script>
+        $().ready(function (e) {
+
+          var popupEvent = function () {
+          }
+
+          $('#popupReturn').hunterPopup({
+            width: '300px',
+            height: '150px',
+            title: "{{user.username}}",
+            content: $('#tableContent'),
+            event: popupEvent
+          });
+
+        });
+      </script>
+
+      <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+      </script>
+
+      <input type="button" id="popupReturn" value="{{user.username}}" class="btn btn-danger">
+
+      <div id="tableContent" style="display:none">
+        <div>
+          <div class="panel-body form-inline dept1"></div>
+          <a class="btn btn-default" id="001" href="{% url 'mypage' %}">마이페이지</a>
+          <a class="btn btn-default" id="002" href="{% url 'mypage' %}">즐겨찾기</a>
+          <a class="btn btn-default" id="003" href="{% url 'mypage' %}">설정</a>
+
+          <div class="panel panel-default">
+            <a class="btn btn-default" id="002" href="{% url 'mypage' %}">펫 페이지 수정</a>
+            <a class="btn btn-default" id="003" href="{% url 'mypage' %}">앨범 수정</a>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+      </script>
+      <a href="{% url 'album' %}">Pet</a>
+      {% endif %}
+      <!-- <a href="{% url 'sun' %}">Home</a> -->
       <a href="{% url 'about_us' %}">About us</a>
     </div>
   </nav>
@@ -399,16 +396,16 @@
 
 
 <script>
-(function($) {
-  $.hunterPopup = function(box, options) {
+  (function ($) {
+    $.hunterPopup = function (box, options) {
       var box = $(box);
       var defaults = {
-          title: 'jQuery hunterPopup Demo',
-          placement: 'left',
-          width: '100%',
-          height: '100%',
-          content: $('<div><h3>jQuery hunterPopup Demo</h3></div>'),
-          event: closePopup
+        title: 'jQuery hunterPopup Demo',
+        placement: 'left',
+        width: '100%',
+        height: '100%',
+        content: $('<div><h3>jQuery hunterPopup Demo</h3></div>'),
+        event: closePopup
       };
       var obj = $.extend(defaults, options);
 
@@ -416,73 +413,73 @@
       var title = $('.title', template);
       var pop_wrap = $('#Hunter_pop_wrap', template);
 
-      $(document).click(function() {
-          template.remove();
+      $(document).click(function () {
+        template.remove();
       });
 
-      box.click(function(event) {
-          event.preventDefault();
-          event.stopPropagation();
-          $('.Hunter-pop-up').remove();
-          var _this = $(this);
-          var offset = _this.offset();
-          var top = offset.top + _this.outerHeight() + 15;
-          if(obj.placement == 'left') {
-              template.css({
-                  'left': offset.left,
-                  'top': top
-              });
-          } else {
-              template.addClass("Hunter-pop-up-right");
-              template.css({
-                  'left': offset.left - obj.width + _this.width() / 2,
-                  'top': top
-              });
-          }
-
-          buildPopup();
-          $('body').append(template);
-          $('.Hunter-pop-up').click(function(event) {
-              event.stopPropagation();
+      box.click(function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $('.Hunter-pop-up').remove();
+        var _this = $(this);
+        var offset = _this.offset();
+        var top = offset.top + _this.outerHeight() + 15;
+        if (obj.placement == 'left') {
+          template.css({
+            'left': offset.left,
+            'top': top
           });
-          obj.event();
+        } else {
+          template.addClass("Hunter-pop-up-right");
+          template.css({
+            'left': offset.left - obj.width + _this.width() / 2,
+            'top': top
+          });
+        }
+
+        buildPopup();
+        $('body').append(template);
+        $('.Hunter-pop-up').click(function (event) {
+          event.stopPropagation();
+        });
+        obj.event();
 
       });
 
       function buildPopup() {
-          buildPopupContent();
-          closePopup();
+        buildPopupContent();
+        closePopup();
       };
 
       function buildPopupContent() {
-          title.text(obj.title);
+        title.text(obj.title);
 
-          var _content = obj.content;
-          _content.show();
-          pop_wrap.children().remove();
-          pop_wrap.append(_content);
-          pop_wrap.width(obj.width);
-          pop_wrap.height(obj.height);
+        var _content = obj.content;
+        _content.show();
+        pop_wrap.children().remove();
+        pop_wrap.append(_content);
+        pop_wrap.width(obj.width);
+        pop_wrap.height(obj.height);
       };
 
       function closePopup() {
-          template.on('click', '.close', function(event) {
-              event.preventDefault();
-              event.stopPropagation();
-              template.remove();
-          });
+        template.on('click', '.close', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          template.remove();
+        });
       }
-  };
+    };
 
-  $.fn.extend({
-      hunterPopup: function(options) {
-          options = $.extend({}, options);
-          this.each(function() {
-              new $.hunterPopup(this, options);
-          });
-          return this;
+    $.fn.extend({
+      hunterPopup: function (options) {
+        options = $.extend({}, options);
+        this.each(function () {
+          new $.hunterPopup(this, options);
+        });
+        return this;
       }
 
-  });
-})(jQuery);
+    });
+  })(jQuery);
 </script>

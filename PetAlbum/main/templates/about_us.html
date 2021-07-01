@@ -2,14 +2,20 @@
 {% load static %}
 {% block container %}
 
-
 <style>
-    body {
-        background-image: url(".static\aboutus_background.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
+    .bg {
+        /* background-image: url(".static\aboutus_background.jpg"); */
+        /* background-repeat: no-repeat;
+        background-size: cover; */
+        position: absolute;
+        top:130px;
+        left:0;
+
+        min-width: 100%;
+        min-height: 100%;
     }
 </style>
-
-<!-- <img src="{% static 'aboutus_background.jpg' %}" alt=""> -->
+<body>
+<img class="bg" src="{% static 'About_Us.png' %}" width="100%" alt="">
+</body>
 {% endblock %}

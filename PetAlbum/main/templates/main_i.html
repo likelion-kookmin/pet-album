@@ -3,5 +3,28 @@
 {% load static %}
 
 {% block container %}
-마이페이지-설정-정보 누르면 나올 html
+
+<style>
+    .logo-image {
+        margin-top: 50px;
+        height: 150px;
+    }
+
+    .logo-text {
+
+        font-size: 70px;
+        font-weight: bold;
+    }
+
+    body {
+        /* background-image: url("aboutus_background.jpg"); */
+        background-color: #1938a0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        position: relative;
+    }
+</style>
+<img src="{% static 'main.png' %}" width="100%"><br>
+
 {% endblock %}
