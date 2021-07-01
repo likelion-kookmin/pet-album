@@ -12,10 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -40,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # hyunji-mypage
+    'mypage',
+    # soyeon-account
     'PetAlbum',
     'account',
     'main',
     'home',
     'my_pet',
-
 ]
 
 MIDDLEWARE = [
@@ -114,13 +118,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -131,8 +135,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'account', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'PetAlbum', 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'my_pet', 'static')]
 # 현재 static 파일들이 어디에 있는지
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #static 파일을 어디에 모을건지 
 
 
@@ -143,5 +148,9 @@ MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+STATICFILES_DIRS = [ 
+    os.path.join(BASE_DIR, "static"),
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+<style>
+    .emoticon {
+        width: 100px;
+    }
+</style>
+<script>
+    function count(type)  {
+  // 결과를 표시할 element
+  const resultElement = document.getElementById('result');
+  
+  // 현재 화면에 표시된 값
+  let number = resultElement.innerText;
+  
+  // 더하기/빼기
+  if(type === 'plus') {
+    number = parseInt(number) + 1;
+  }else if(type === 'minus')  {
+    number = parseInt(number) - 1;
+  }
+  
+  // 결과 출력
+  resultElement.innerText = number;
+}
+</script>
+
+<input type='button'
+       onclick='count("plus")'
+       value=''/><img src="{% static '01.png' %}" class="emoticon">
+<input type='button'
+       onclick='count("minus")'
+       value='-'/>
+<div id='result'>0</div>
+
+
+<div>좋아요 수 : {{Pet_day.emoticon_01}}</div>
+
+
+{% endblock %}

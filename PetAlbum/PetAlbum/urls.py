@@ -1,35 +1,13 @@
-"""PetAlbum URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path, include
-from django.urls.conf import include
-from account.views import *
-from main.views import *
-from home.views import *
-from my_pet.views import *
-
-
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('account/',include('account.urls')), #path연결
     path('',include('main.urls')),
+    path('admin/', admin.site.urls),
+    path('mypage/', include('mypage.urls')),
+    path('account/',include('account.urls')), #path연결
     path('home/',include('home.urls')),
     path('my_pet/',include('my_pet.urls')),
- ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

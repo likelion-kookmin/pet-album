@@ -10,6 +10,5 @@ class CustomUser(AbstractUser):
 		('Y', '있음'),
         ('N', '없음'),
     )
-    pet = models.CharField(max_length=2, choices=pet_choices, blank=True)
-
-
+    # pet = models.CharField(max_length=2, choices=pet_choices, blank=True)
+    # like= models.ManyToManyField('Pet_day', blank=True, related_name='like_user')
