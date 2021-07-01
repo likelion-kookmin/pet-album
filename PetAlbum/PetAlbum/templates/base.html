@@ -25,7 +25,7 @@
   <!-- 팝오버 -->
   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <link rel="stylesheet" type="text/css" href="{% static 'fonts.css' %}"/>
   <script>
     // 팝오버
     $(function () {
@@ -158,7 +158,7 @@
 
 .Hunter-pop-up-right:before,
 .Hunter-pop-up-right:after {
-    left: auto;
+    left: 250px;
     right: 20px;
 }
 
@@ -290,17 +290,13 @@
       <a class="navbar-brand" href="{% url 'main' %}">
         <img src="{% static 'little_friends.png' %}" class="nav-logo"></a>
     </div>
-    <div class="nav-menu">
-      <a href="{% url 'about_us' %}">About us</a>
-      <a href="{% url 'sun' %}">Home</a>
+    <div class="nav-menu">  
       {% if not user.is_authenticated %}
       <a href="{% url 'join' %}">Join</a>
       <a href="{% url 'login' %}">Login</a>
       {% endif %}
       {% if user.is_authenticated %}
-      <a href="{% url 'login' %}">Pet</a>
-      <a href="{% url 'login' %}">{{user.username}}</a>
-      {% endif %}
+
 <!-- 팝오버 -->
 <script type="text/javascript"></script>
 
@@ -317,9 +313,9 @@
                         }
         
                         $('#popupReturn').hunterPopup({
-                            width: '320px',
-                            height: '200px',
-                            title: "jQuery hunterPopup Demo",
+                            width: '300px',
+                            height: '150px',
+                            title: "{{user.username}}",
                             content: $('#tableContent'),
                             event: popupEvent
                         });
@@ -342,22 +338,18 @@
           
           </script>
 
-                <input type="button" id="popupReturn" value="User"  class="btn btn-danger">
+                <input type="button" id="popupReturn" value="{{user.username}}"  class="btn btn-danger">
         
                 <div id="tableContent" style="display:none">
                     <div>
-                       
-                            <div class="panel-heading">User name</div>
-                            <div class="panel-heading">User ID</div><hr>
-        
                             <div class="panel-body form-inline dept1"></div>
-                                <a class="btn btn-default" id="001">Item</a>
-                                <a class="btn btn-default" id="002">Item</a>
-                                <a class="btn btn-default" id="003">Item</a>
+                                <a class="btn btn-default" id="001" href="">마이페이지</a>
+                                <a class="btn btn-default" id="002" href="">즐겨찾기</a>
+                                <a class="btn btn-default" id="003" href="">설정</a>
                        
                         <div class="panel panel-default">
-                        <a class="btn btn-default" id="002">Item</a>
-                        <a class="btn btn-default" id="003">Item</a></div>
+                        <a class="btn btn-default" id="002" href="">펫 페이지 수정</a>
+                        <a class="btn btn-default" id="003" href="">앨범 수정</a></div>
                     </div>
                 </div>
         
@@ -375,7 +367,10 @@
           })();
         
         </script>
-
+        <a href="{% url 'login' %}">Pet</a>
+{% endif %}
+<a href="{% url 'sun' %}">Home</a>
+      <a href="{% url 'about_us' %}">About us</a>
     </div>
   </nav>
   <!-- <div class="container">
@@ -450,8 +445,6 @@
           $('.Hunter-pop-up').click(function(event) {
               event.stopPropagation();
           });
-
-          //调用弹出层内容注册的事件。
           obj.event();
 
       });
@@ -464,7 +457,6 @@
       function buildPopupContent() {
           title.text(obj.title);
 
-          //构造弹出层的内容
           var _content = obj.content;
           _content.show();
           pop_wrap.children().remove();

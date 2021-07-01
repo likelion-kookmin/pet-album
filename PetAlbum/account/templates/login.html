@@ -3,31 +3,104 @@
 
 
 {% block container %}
-<img src="{% static 'logo_black.png' %}" alt="" width="200" height=""><br>
-<h1>little friends</h1>
-<h1>Login</h1>
 
-<form action="{%url 'login'%}" method="post" >  <!--enctype="multipart/form-data"-->
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="아이디">
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호">
-      </div>
-    {%csrf_token%}
-    {{form.as_p}}
+<style>
+  .form-signin {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+  }
 
-    <div class="form-check">
+  .logo-image {
+    margin-top: 60px;
+    height: 60px;
+  }
+
+  .logo-text {
+    
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+
+  .form-check {
+    display: block;
+    margin: 30px 0;
+    padding-left: 1.5em;
+    max-width: 450px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #016FAC;
+    border-color: #016FAC;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+  .text-left {
+    text-align: left
+  }
+</style>
+
+<div class="form-signin">
+  <div class="raw">
+    <div class="col-12">
+      <div class="col-12 text-center">
+        <img class="logo-image" src="{% static 'logo_black.png' %}"><br>
+        <div class="logo-text">little friends
+      </div></div>
+      <h2>로그인</h2>
+
+
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="username" id="username" placeholder="아이디를 입력하세요.">
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+      </div>
+
+
+      <span style="color:red;"><strong>{{error}}</strong> </span>
+
+      <!-- <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          로그인 유지하기
-        </label>
-        
-        <a href="#">아이디/비번 찾기</a><br>
+        <span class="text-left">dasdf</span>로그인 상태 유지하기
+        <a class="text-right" href="#">아이디/비밀번호 찾기</a>
+      </div> -->
 
+      <button type="submit" class="btn btn-primary">로그인</button><br><br>
 
-    <button type="submit" style="color: #016FAC;"> 로그인 </button> <br>
-      회원가입 할꺼임? <a href="#">회원가입</a><br>
-</form>
-
-{% endblock %}
+      작은친구들 회원 혜택을 받아보세요 <a href="{% url 'join' %}"> <b>회원가입</b></a><br>
+    </form>
+  </div>
+  {% endblock %}
