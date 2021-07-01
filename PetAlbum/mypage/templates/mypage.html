@@ -102,6 +102,10 @@
         span:active {
             display: block;
         } 
+
+        .profile {
+            border-radius: 70%;
+        }
     </style>
 
     <script type="text/javascript">
@@ -117,14 +121,13 @@
 </head>
 
 <body>
-    <div class="user">
-        <!--{% for custom_user in custom_users %}-->
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ custom_user.nickname }}</p>
-            {% if custom_user.user_image %}
-                <p><img src = "{{ custom_user.user_image.url }}" alt="" height="300"></p>
-            {% endif %}
-        <!--{% endfor %}-->
-    </div>
+<br><br>
+    <div class="user"> 
+        {% if custom_user.user_image %}
+            <img class="profile" src = "{{ custom_user.user_image.url }}" alt="" height="150" style="vertical-align:middle;">
+        {% endif %}
+        &nbsp;&nbsp;&nbsp;&nbsp;{{ custom_user.nickname }}
+    <br><br><br><br><br>
     <div class="home">
         <div class = "tabs">
         <!--
