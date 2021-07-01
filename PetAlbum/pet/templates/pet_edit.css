@@ -1,0 +1,10 @@
+#button-one {
+    width: 250px;
+    border-radius: 10px; 
+}
+
+.button-two {
+    border-color: #fff;
+    border-radius: 10px;
+    background-color: #016FAC;
+}
