@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+    'pet',
+=======
     # sejin-album
     'album',
     # hyunji-mypage
@@ -52,6 +55,7 @@ INSTALLED_APPS = [
     'main',
     'home',
     'my_pet',
+>>>>>>> 2e4beafaa292c2b8e3a13e7e8be783b54de2b977
 ]
 
 MIDDLEWARE = [
