@@ -6,10 +6,10 @@ from .models import Album
 # Create your views here.
 
 # specific user albums
-def album_pet(request, pet_id, user_id):
+def album_pet(request, pet_id, user_id,pet_page_id):
   user = get_object_or_404(CustomUser, pk=user_id)
   pet = get_object_or_404(Pet, pk=pet_id)
-  pet_page = get_object_or_404(Pet_page, pk=pet_id)
+  pet_page = get_object_or_404(Pet_page, pk=pet_page_id)
   albums = Album.objects.filter(pet_id=pet_id)
   return render(request, 'album.html', {'albums':albums, 'pet':pet, 'user':user, 'pet_page':pet_page})
 
