@@ -55,7 +55,7 @@
     <ol class="image-list">
       {% for album in albums %}
       <li class="image-item">
-        <a href="{% url 'album_edit' album.id %}" class="detail-link">
+        <a href="{% url 'album_edit' pet.id, album.id %}" class="detail-link">
           {% if album.album_image %}
           <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
           {% else %}
