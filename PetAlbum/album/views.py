@@ -1,3 +1,4 @@
+from account.models import CustomUser
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Album
 # from .forms import AlbumForm
@@ -5,14 +6,12 @@ from .models import Album
 # Create your views here.
 
 # specific user albums
-def album_pet(request, pet_id):
+def album_pet(request, pet_id, user_id):
+  user = get_object_or_404(CustomUser, pk=user_id)
+  pet = get_object_or_404(Pet, pk=pet_id)
+  pet_page = get_object_or_404(Pet_page, pk=pet_id)
   albums = Album.objects.filter(pet_id=pet_id)
-  return render(request, 'album.html', {'albums':albums})
-
-# all user albums
-def album(request):
-  albums = Album.objects.all()
-  return render(request, 'album.html', {'albums':albums})
+  return render(request, 'album.html', {'albums':albums, 'pet':pet, 'user':user, 'pet_page':pet_page})
 
 def album_add(request, pet_id):
   pet = get_object_or_404(Pet, pk=pet_id)

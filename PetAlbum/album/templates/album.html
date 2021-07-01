@@ -18,13 +18,13 @@
     <div class="album-container">
       <div class="album-info">
         <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">
-          <div class="pet__name">user</div>
+          <div class="pet__name">{{pet.name}}</div>
           <a href="">
-            <span class="user__detail">user house</span>
+            <span class="user__detail">{{pet_page.title}}</span>
           </a>
           <span class="user__detail"> · </span>
           <a href="">
-            <span class="user__detail">user name</span>
+            <span class="user__detail">{{user.nickname}}</span>
           </a>
       </div>
       <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
