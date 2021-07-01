@@ -19,7 +19,7 @@ class Pet(models.Model):
     birthday = models.DateField()
     voice = models.FileField()
     deathday = models.DateField()
-    satatus = models.CharField(max_length=20)
+    status = models.CharField(max_length=20)
 
 
 class Pet_day(models.Model):
