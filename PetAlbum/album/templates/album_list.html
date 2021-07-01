@@ -1,0 +1,106 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+        <li class="nav-item dropdown">
+          <a class="navbar-brand dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {% if pet.pet_image %}
+            <img src="{% pet.pet_image.url %}" alt="" class="pet__image">{{pet.name}}}
+            {% else %}
+            <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="image-thumbnail">
+            {% endif %}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            {% for pet in pets %}
+              <li><a class="dropdown-item" href="{% url 'album_add' pet.id %}">{{ pet.id }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      <div class="form-check-inline">
+        <label class="form-check-label text-white" for="showPublic">
+          전체 공개
+        </label>
+        <input class="form-check-input" type="radio" name="showType" id="showPublic" checked>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label text-white" for="showPrivate">
+          전체 비공개
+        </label>
+        <input class="form-check-input" type="radio" name="showType" id="showPrivate">
+      </div>
+      <button class="save-button" type="button">앨범 저장하기</button>
+    </div>
+  </div>
+</nav>
+<aside class="aside-container">
+  <span class="aside__title">정렬</span>
+  <select onchange="goLink(this.value)" id="order-select">
+    <div class="form-check-inline">
+      <option class="form-check-input" type="radio" name="sorting" id="newest" value="newest" selected>
+        <label class="form-check-label" for="newest">
+          최신순
+        </label>
+      </option>
+    </div>
+    <div class="form-check-inline">
+      <option class="form-check-input newest" type="radio" name="sorting" id="oldest" value="oldest">
+        <label class="form-check-label oldest" for="oldest" value="?oldest">
+          오래된순
+        </label>
+      </option>
+    </div>
+  </select>
+  <div class="list-container">
+    <ol class="image-list">
+      {% for album in albums %}
+      <li class="image-item">
+        <a href="{% url 'album_edit' pet.id, album.id %}" class="detail-link">
+          {% if album.album_image %}
+          <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
+          {% else %}
+          <img src="{% static 'blank_box.jpg' %}" alt="" class="image-thumbnail">
+          {% endif %}
+          <span class="hide">{{album.comment}}</span>
+          <time class="hide">{{album.image_datetime}}</time>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+    <button onclick="goAdd();" class="upload-button">
+      <i class="bi bi-plus-lg"></i>
+    </a>
+  </div>
+</aside>
+
+<script type="text/javascript">
+  var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1));
+          sURLVariables = sPageURL.split('&');
+          var sParameterName;
+
+      for (var i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+      }
+  };
+  var order = getUrlParameter('order');
+  var sel = document.getElementById("order-select");
+
+  function goLink(value) {
+      location.href = '?order='+ value;
+  }
+
+  if(order == 'newest'){
+      sel[0].selected = true;
+  }else {
+      sel[1].selected = true;
+  };
+</script>

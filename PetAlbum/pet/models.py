@@ -32,3 +32,4 @@ class Pet_day(models.Model):
     emoticon_04 = models.IntegerField()
     emoticon_05 = models.IntegerField()
 
+

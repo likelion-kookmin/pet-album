@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+    <style type="text/css"> 
+        body {
+            background-color:#016FAC;
+        }
+        a { 
+            text-decoration: none;
+        } 
+        table {
+            padding: 10px;
+            width: 100%;
+            border-collapse: collapse;
+            color: #484848;
+        }
+        td {
+            border-bottom: 1px solid #444444;
+            border-color: #e2e2e2;
+            padding: 10px;
+            color: #484848;
+            height: 30px;
+        }
+        th {
+            text-align: left;
+            border-bottom: 2px solid #484848;
+            border-color: #484848;
+            padding: 10px;
+            color: #484848;
+            height: 30px;
+        }
+        p.indent {
+            padding: 35px;
+        }
+        .pagination {
+            text-align: center;
+            color: black;
+            float: center;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+        }
+        .link {
+            text-align: center;
+            font-size: 15px;
+            line-height: 30px;
+            width: 120px;
+            height: 30px;
+            color: white;
+            background-color: #016FAC;
+            border-radius: 5px;
+            margin: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="user">
+    </div>
+    <div class="home">
+        <div class = "tabs">
+            <!--
+            <div class="tab active-tab" data-tab-target="#tab1">
+                <p>즐겨찾기</p>
+            </div>
+            -->
+            <div class="tab" data-tab-target="#tab2">
+                <p>회원정보 수정</p>
+            </div>
+            <div class="tab" data-tab-target="#tab3">
+                <p>설정</p>
+            </div>
+            <div class="tab active-tab" data-tab-target="#tab4">
+                <p>1:1 문의</p>
+
+            </div>
+            <div class="tab" data-tab-target="#tab5">
+                <p>공지사항</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+         <!--
+        <div id="tab1" data-tab-content class="items active">
+            <h2>즐겨찾기</h2>
+            <p>탭 1 에 들어갈 내용</p>
+        </div>
+        -->
+        <div id="tab2" data-tab-content class="items">
+            <h2>회원정보 수정</h2>
+            <p>탭 2 에 들어갈 내용</p>
+        </div>
+        <div id="tab3" data-tab-content class="items">
+            <h2>설정</h2>
+            <p>탭 3 에 들어갈 내용</p>
+        </div>
+        <div id="tab4" data-tab-content class="items active">
+            
+            <br>
+            <div class="container">
+	        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token%}
+                <h4>제목: </h4>
+                <input type="text" name="title">
+                <br>
+                <br>
+                <h4>본문: </h4>
+                <textarea cols=40 rows=10 name="contents"></textarea>
+                <br>
+                <h4>이미지: </h4>
+                <input name="cs_image" type="file">
+                <br>
+                <br>
+                <input class="btn btn-dark" type="submit" value="글쓰기">
+                <a href="{% url 'mypage' %}">취소하기</a>
+            </form>
+    </div>
+            <p class="indent"></p>
+        </div>
+        <div id="tab5" data-tab-content class="items">
+            
+    </div>
+    
+<script src="{% static 'main.js' %}"></script>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

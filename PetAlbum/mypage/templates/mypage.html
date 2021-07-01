@@ -1,0 +1,245 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+    <style type="text/css"> 
+        body {
+            background-color:#016FAC;
+        }
+        a { 
+            text-decoration: none;
+        } 
+        table {
+            padding: 10px;
+            width: 100%;
+            border-collapse: collapse;
+            color: #484848;
+        }
+        td {
+            border-bottom: 1px solid #444444;
+            border-color: #e2e2e2;
+            padding: 10px;
+            color: #484848;
+            height: 30px;
+        }
+        th {
+            text-align: left;
+            border-bottom: 2px solid #484848;
+            border-color: #484848;
+            padding: 10px;
+            color: #484848;
+            height: 30px;
+        }
+        p.indent {
+            padding: 70px;
+        }
+        .pagination {
+            text-align: center;
+            color: black;
+            float: center;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+        }
+        .link {
+            text-align: center;
+            font-size: 15px;
+            line-height: 30px;
+            width: 120px;
+            height: 30px;
+            color: white;
+            background-color: #016FAC;
+            border-radius: 5px;
+            margin: auto;
+        }
+
+        #menu div {
+            position: relative;
+            display: inline-block;
+        }
+            
+        span {
+            display: block;
+            cursor: pointer;
+        }
+        .arrow_box {
+            display: none;
+            position: absolute;
+            width: 300px;
+            height: 40px;
+            padding: 15px;
+            left: 10;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;  
+            border-radius: 8px;
+            background: #016FAC;
+            color: #fff;
+            font-size: 14px;
+        }
+            
+        .arrow_box:after {
+            border-top:0px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #016FAC;
+            content:"";
+            position:absolute;
+            top:-10px;
+            left:10%;
+        }
+            
+        span:hover + p.arrow_box {
+            display: block;
+        } 
+        span:active {
+            display: block;
+        } 
+
+        .profile {
+            border-radius: 70%;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function urlClipCopy() {
+            var f = document.clipboard.url;
+            f.value = document.location.href;
+            f.select() ;
+            therange=f.createTextRange() ;
+            therange.execCommand("Copy");
+            alert("클립보드로 URL이 복사되었습니다.");
+            }
+    </script>
+</head>
+
+<body>
+<br><br>
+    <div class="user"> 
+        {% if custom_user.user_image %}
+            <img class="profile" src = "{{ custom_user.user_image.url }}" alt="" height="150" style="vertical-align:middle;">
+        {% endif %}
+        &nbsp;&nbsp;&nbsp;&nbsp;{{ custom_user.nickname }}
+    <br><br><br><br><br>
+    <div class="home">
+        <div class = "tabs">
+        <!--
+            <div class="tab active-tab" data-tab-target="#tab1">
+                <p>즐겨찾기</p>
+            </div>
+            -->
+            <div class="tab active-tab" data-tab-target="#tab2">
+                <p>회원정보 수정</p>
+            </div>
+            <div class="tab" data-tab-target="#tab3">
+                <p>설정</p>
+            </div>
+            <div class="tab" data-tab-target="#tab4">
+                <p>1:1 문의</p>
+
+            </div>
+            <div class="tab" data-tab-target="#tab5">
+                <p>공지사항</p>
+            </div>
+        </div>
+        </div>
+
+    <div class="content">
+    <!--
+        <div id="tab1" data-tab-content class="items active">
+            <h2>즐겨찾기</h2>
+            <p>탭 1 에 들어갈 내용</p>
+        </div>
+        -->
+        <div id="tab2" data-tab-content class="items active">
+            <h2>회원정보 수정</h2>
+            <p>탭 2 에 들어갈 내용</p>
+        </div>
+        <div id="tab3" data-tab-content class="items">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td style="color: #707070">&nbsp;&nbsp;&nbsp;&nbsp;정보</td>
+                </tr>
+                <tr>
+                    <td style="color: #707070">
+                        <div id="menu">
+                            <div> <span>&nbsp;&nbsp;&nbsp;&nbsp;친구초대</span>
+                            <p class="arrow_box">친구의 반려동물을 보고 싶다면 초대해보세요
+                                <input name="url" type="text">
+                                <a href="javascript:urlClipCopy()" style="color: white;">복사하기</a>
+                            </p>
+                            </div>
+                        </td>
+                </tr>
+                <tr>
+                    <td style="color:#016FAC">&nbsp;&nbsp;&nbsp;&nbsp;로그아웃</div>
+                </tr> 
+                </tbody>
+            </table>
+            <p class="indent"></p>     
+        </div>
+        <div id="tab4" data-tab-content class="items">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;내용</th>
+                        <th style="width: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;작성일</th>
+                        <th style="width: 90px;">처리상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for obj in objs.all %}
+                <tr>
+                    <td><a href="{% url 'cs' obj.id %}" style="color:#707070">&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.title|truncatechars:30 }}</td></a>
+                    <td width=200 style="color:#707070">{{ obj.updated_date|date:'Y. m. d' }}</td>
+                    <td width=100 style="color:#707070">&nbsp;{{ obj.state_check }}</td>
+                </tr> 
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                <a href="#" class="active"> 1</a>
+            </div> 
+            <br><br><br>
+            <div class=link>
+                <a href="{% url 'create' %}" style="color:white;">1:1문의하기</a> 
+            </div>
+            <p class="indent"></p>
+        </div>
+        <div id="tab5" data-tab-content class="items">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;내용</th>
+                        <th style="width: 20px;">작성일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for mypage in mypages.all %}
+                <tr>
+                    <td><a href="{% url 'detail' mypage.id %}" style="color:#707070"> &nbsp;&nbsp;&nbsp;&nbsp;{{ mypage.title|truncatechars:30 }}</td></a>
+                    <td width=100 style="color:#707070">{{ mypage.updated_date|date:'Y. m. d' }}</td>
+                </tr> 
+                {% endfor %}
+                </tbody>
+            </table>
+            <p class="indent"></p>
+            <div class="pagination">
+                <a href="#" class="active"> 1</a>
+            </div>
+        </div>
+    </div>
+    
+<script src="{% static 'main.js' %}"></script>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
