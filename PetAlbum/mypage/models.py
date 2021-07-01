@@ -1,9 +1,13 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
+from account.models import CustomUser
+from django.conf import settings
+from account.models import *
 
 # Create your models here.
 class Notice(models.Model):
-    user_id = models.ForeignKey
+    #user_id = models.ForeignKey('account.CustomUser', on_delete=CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE)
     title = models.CharField(max_length=100)
     contents = models.TextField(null=True)
     created_date = models.DateField(auto_now_add=True) #수정 안됨
@@ -13,8 +17,9 @@ class Notice(models.Model):
         return self.title
 
 class Cs(models.Model):
-    # user_id = models.ForeignKey(User, on_delete=CASCADE)
-    user_id = models.ForeignKey
+    #user_id = models.ForeignKey(User, on_delete=CASCADE)
+    #user_id = models.ForeignKey('account.CustomUser', on_delete=CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE)
     title = models.CharField(max_length=100)
     contents = models.TextField(null=True)
     created_date = models.DateField(auto_now_add=True) #수정 안됨
@@ -34,8 +39,9 @@ class Cs(models.Model):
     
 
 class Cs_comment(models.Model):
-    user_id = models.ForeignKey
-    cs_id = models.ForeignKey
-    comment = models.TextField
+    #user_id = models.ForeignKey('account.CustomUser', on_delete=CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE)
+    cs_id = models.ForeignKey('mypage.Cs', on_delete=CASCADE)
+    content = models.TextField(null=True)
     created_date = models.DateField(auto_now_add=True) #수정 안됨
     updated_date = models.DateField(auto_now=True)

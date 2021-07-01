@@ -2,15 +2,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Notice
 from .models import Cs
+from .models import Cs_comment
+from account.models import *
 from django.views.generic import ListView
 from django.core.paginator import Paginator
+
 
 # Create your views here.
 
 def mypage(request):
     mypages = Notice.objects.all()
     objs = Cs.objects.all()
-    return render(request, 'mypage.html', {'mypages':mypages, 'objs':objs})
+    if (request.user.is_authenticated):
+        custom_user = request.user
+    return render(request, 'mypage.html', {'mypages':mypages, 'objs':objs, 'custom_user':custom_user})
 
 def detail(request, mypage_id):
     mypage_detail = get_object_or_404(Notice, pk=mypage_id)
@@ -18,7 +23,8 @@ def detail(request, mypage_id):
 
 def cs(request, obj_id):
     obj_detail = get_object_or_404(Cs, pk=obj_id)
-    return render(request, 'cs_detail.html', {'obj':obj_detail})
+    comments = Cs_comment.objects.filter(cs_id=obj_id)
+    return render(request, 'cs_detail.html', {'obj':obj_detail, 'comments': comments})
 
 def create(request):
     if request.method == 'GET':
@@ -30,7 +36,7 @@ def create(request):
         obj.contents = request.POST.get('contents', None)
         obj.cs_image = request.FILES.get('cs_image', None)
         # save invisible model data
-        # obj.user_id = request.user
+        obj.user_id = request.user
         obj.created_date = timezone.datetime.now()
         obj.updated_date = timezone.datetime.now()
         obj.state_check = "ing"
