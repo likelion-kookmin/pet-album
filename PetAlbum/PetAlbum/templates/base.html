@@ -343,13 +343,13 @@
                 <div id="tableContent" style="display:none">
                     <div>
                             <div class="panel-body form-inline dept1"></div>
-                                <a class="btn btn-default" id="001" href="">마이페이지</a>
-                                <a class="btn btn-default" id="002" href="">즐겨찾기</a>
-                                <a class="btn btn-default" id="003" href="">설정</a>
+                                <a class="btn btn-default" id="001" href="{% url 'mypage' %}">마이페이지</a>
+                                <!--<a class="btn btn-default" id="002" href="">즐겨찾기</a>-->
+                                <!--<a class="btn btn-default" id="003" href="">설정</a>-->
                        
                         <div class="panel panel-default">
-                        <a class="btn btn-default" id="002" href="">펫 페이지 수정</a>
-                        <a class="btn btn-default" id="003" href="">앨범 수정</a></div>
+                        <a class="btn btn-default" id="002" href="{% url 'pet:edit' pet.id %}">펫 페이지 수정</a>
+                        <a class="btn btn-default" id="003" href="{% url 'album_add' pet.id %}">앨범 수정</a></div>
                     </div>
                 </div>
         
@@ -367,7 +367,7 @@
           })();
         
         </script>
-        <a href="{% url 'login' %}">Pet</a>
+        <a href="{% url 'album' %}">Pet</a>
 {% endif %}
 <a href="{% url 'sun' %}">Home</a>
       <a href="{% url 'about_us' %}">About us</a>
