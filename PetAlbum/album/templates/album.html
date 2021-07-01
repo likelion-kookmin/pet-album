@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/common.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/album.css' %}"/>
+  <!-- <link rel="stylesheet" href="../static/css/common.css"> -->
+  <!-- <link rel="stylesheet" href="../static/css/album.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <title>Album</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="album-container">
+      <div class="album-info">
+        <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">
+          <div class="pet__name">user</div>
+          <a href="">
+            <span class="user__detail">user house</span>
+          </a>
+          <span class="user__detail"> · </span>
+          <a href="">
+            <span class="user__detail">user name</span>
+          </a>
+      </div>
+      <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          {% for album in albums %}
+          <div class="carousel-item">
+            {% if album.album_image %}
+            <img src="{{album.album_image.url}}" class="carousel-image d-block mx-auto " data-bs-toggle="modal" data-bs-target="#myModal" alt="">
+            <span class="hide">{{album.comment}}</span>
+            <time class="hide">{{album.image_datetime}}</time>
+            {% endif %}
+            <button class="heart-button">
+              <i class="bi bi-suit-heart-fill"></i>
+            </button>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev" onclick="$('#myCarousel').carousel('prev')">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next" onclick="$('#myCarousel').carousel('next')">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!-- <label for="customRange1" class="form-label"></label>
+      <input type="range" min="0" max="100" class="form-range" id="rangeSlider">
+      <p>Value: <span id="demo"></span></p> -->
+
+      <div class="button-container">
+        <button id="playPauseBtn" type="button" class="play-pause-button">
+          <i class="bi bi-pause-fill"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="full-image">
+              <img src="" class="modal-image w-100" alt="">
+            </div>
+            <div class="modal__text">
+              <h5 class="modal__title" id="modalLabel">Modal title</h5>
+              <time class="modal__date">June.01.2016</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  $(function() {
+    $('#myCarousel').carousel({
+      interval: 2000,
+      pause: "false"
+    });
+    $('.carousel-item').filter(':first').addClass('active');
+  });
+
+  $(document).on('click', '#playPauseBtn', function() {
+    var $el = $(this).children("i");
+
+    var isPlaying = $el.hasClass('bi-pause-fill');
+    var isPaused = $el.hasClass('bi-play-fill');
+
+    if (isPaused) {
+      // we know it's paused, so play it
+      $('#myCarousel').carousel('cycle');
+      $el.removeClass('bi-play-fill');
+      $el.addClass('bi-pause-fill');
+    } else if (isPlaying) {
+      // we know it's playing, so pause it
+      $('#myCarousel').carousel('pause');
+      $el.removeClass('bi-pause-fill');
+      $el.addClass('bi-play-fill');
+    }
+  });
+  
+  $('.heart-button').click(function(){
+    $(this).toggleClass('hearted');
+  });
+
+  // Get the modal
+  var modal = $("#myModal");
+  var modalImg = modal.find('.modal-image');
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = $(".carousel-image");
+  var caption =$(".modal__title");
+  var date = $(".modal__date")
+
+  img.click(function() {
+      modalImg.attr('src', $(this).attr('src'));
+      caption.text( $(this).siblings("span").text() );
+      date.text( $(this).siblings("time").text() );
+      modal.show();
+  });
+
+  // Get the elements that closes the modal
+  var modalCloser = $(".close");
+
+  // When the user clicks on the close element, close the modal
+  modalCloser.click(function() {
+      modal.hide();
+  });
+
+  // //range slider 
+  // var rangeslider = document.getElementById("rangeSlider");
+  // var output = document.getElementById("demo");
+  // output.innerHTML = rangeslider.value;
+    
+  // rangeslider.oninput = function() {
+  //   output.innerHTML = this.value;
+  // }
+  
+</script>
+</html>

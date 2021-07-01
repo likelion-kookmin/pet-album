@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # sejin-album
+    'album',
     # hyunji-mypage
     'mypage',
     # soyeon-account
@@ -132,6 +134,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'album', 'static')] #static 파일이 있는 경로 작성
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'account', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'PetAlbum', 'static')]
