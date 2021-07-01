@@ -6,7 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path('',include('main.urls')),
     path('admin/', admin.site.urls),
-    path('album/', include('album.urls'))
+    path('album/', include('album.urls')),
     path('mypage/', include('mypage.urls')),
     path('account/',include('account.urls')), #path연결
     path('home/',include('home.urls')),
