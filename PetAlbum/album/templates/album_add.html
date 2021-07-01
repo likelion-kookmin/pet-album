@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block container %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,7 +18,7 @@
   {% include "album_list.html" %}
     <div class="detail-container">
       <div class="upload-info" id="uploadPage">
-        <form action="{%url 'album_create' %}" method="post" enctype="multipart/form-data">
+        <form action="{%url 'album_create' pet.id %}" method="post" enctype="multipart/form-data">
           {%csrf_token%}
           <input type="text" name="image_datetime" class="form-control" id="datePicker">
           <div class="moment-container">
@@ -65,3 +67,4 @@
   });
 </script>
 </html>
+{% endblock %}

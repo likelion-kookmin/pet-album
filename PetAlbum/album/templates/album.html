@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block container %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>  
@@ -7,8 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/common.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/album.css' %}"/>
-  <!-- <link rel="stylesheet" href="../static/css/common.css"> -->
-  <!-- <link rel="stylesheet" href="../static/css/album.css"> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <title>Album</title>
@@ -17,15 +17,19 @@
   <div class="wrapper">
     <div class="album-container">
       <div class="album-info">
-        <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">
-          <div class="pet__name">user</div>
-          <a href="">
-            <span class="user__detail">user house</span>
-          </a>
-          <span class="user__detail"> · </span>
-          <a href="">
-            <span class="user__detail">user name</span>
-          </a>
+        {% if pet.pet_image %}
+          <img src="{% pet.pet_image.url%}" alt="" class="pet__image">
+        {% else %}
+          <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="image-thumbnail">
+        {% endif %}
+        <div class="pet__name">{{pet.name}}</div>
+        <a href="">
+          <span class="user__detail">{{pet_page.title}}</span>
+        </a>
+        <span class="user__detail"> · </span>
+        <a href="">
+          <span class="user__detail">{{user.nickname}}</span>
+        </a>
       </div>
       <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -135,15 +139,7 @@
   modalCloser.click(function() {
       modal.hide();
   });
-
-  // //range slider 
-  // var rangeslider = document.getElementById("rangeSlider");
-  // var output = document.getElementById("demo");
-  // output.innerHTML = rangeslider.value;
-    
-  // rangeslider.oninput = function() {
-  //   output.innerHTML = this.value;
-  // }
   
 </script>
 </html>
+{% endblock %}

@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block container %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,14 +18,14 @@
   {% include "album_list.html" %}
     <div class="detail-container">
       <div class="moment-info" id="detailPage">
-        <form action="{%url 'album_update' album.id%}" method="post" enctype="multipart/form-data">
+        <form action="{%url 'album_update' pet.id, album.id%}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
           <input type="text" name="image_datetime" class="form-control" id="datePicker" value='{{album.image_datetime|date:"Y-m-d"}}'>
           <div class="moment-container">
             {% if album.album_image %}
             <img src="{{album.album_image.url}}" id="output" alt="" class="moment__image"></img>
             {% endif %}
-            <input type="button" name="is_public" value="true" id="secretButton" onClick="changePrivacy">
+            <!-- <input type="button" name="is_public" value="true" id="secretButton" onClick="changePrivacy"> -->
           </div>
           <input type="text"  name="comment" class="form-control" id="comment" value="{{album.comment}}" placeholder="순간에 대한 설명을 남겨보세요">
           <div class="button-container">
@@ -64,13 +66,13 @@
   };
 
   function doDelete(){
-     location.href = "{% url 'album_delete' album.id %}";
+     location.href = "{% url 'album_delete' pet.id, album.id %}";
   }
   function doUpdate(){
-     location.href = "{% url 'album_update' album.id %}";
+     location.href = "{% url 'album_update' pet.id, album.id %}";
   }
   function goAdd(){
-     location.href = "{% url 'album_add' %}";
+     location.href = "{% url 'album_add' pet.id %}";
   }
   //uplaoad button 
   $('#output').on('click', function() {
@@ -89,3 +91,4 @@
 
 </script>
 </html>
+{% endblock %}

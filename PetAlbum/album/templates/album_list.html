@@ -8,7 +8,11 @@
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
         <li class="nav-item dropdown">
           <a class="navbar-brand dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="pet__image">user01
+            {% if pet.pet_image %}
+            <img src="{% pet.pet_image.url %}" alt="" class="pet__image">{{pet.name}}}
+            {% else %}
+            <img src="{% static 'pet_thumbnail.jpg' %}" alt="" class="image-thumbnail">
+            {% endif %}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
             {% for pet in pets %}
@@ -55,7 +59,7 @@
     <ol class="image-list">
       {% for album in albums %}
       <li class="image-item">
-        <a href="{% url 'album_edit' album.id %}" class="detail-link">
+        <a href="{% url 'album_edit' pet.id, album.id %}" class="detail-link">
           {% if album.album_image %}
           <img src="{{album.album_image.url}}" alt="" class="image-thumbnail">
           {% else %}
